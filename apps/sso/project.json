@@ -1,0 +1,98 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/sso/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/sso",
+        "index": "apps/sso/src/index.html",
+        "baseHref": "/",
+        "main": "apps/sso/src/main.ts",
+        "polyfills": "apps/sso/src/polyfills.ts",
+        "tsConfig": "apps/sso/tsconfig.app.json",
+        "assets": ["apps/sso/src/favicon.ico", "apps/sso/src/assets"],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "apps/sso/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/sso/src/environments/environment.ts",
+              "with": "apps/sso/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "webpackConfig": "apps/sso/webpack.config.prod.js"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/react:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "sso:build",
+        "hmr": true,
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "sso:build:development"
+        },
+        "production": {
+          "buildTarget": "sso:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/sso/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/sso"],
+      "options": {
+        "jestConfig": "apps/sso/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/web:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "sso:build",
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "sso:build:development"
+        },
+        "production": {
+          "buildTarget": "sso:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

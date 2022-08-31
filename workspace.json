@@ -1,5 +1,19 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "about": "apps/about",
+    "about-e2e": "apps/about-e2e",
+    "discussion": "apps/discussion",
+    "discussion-e2e": "apps/discussion-e2e",
+    "people": "apps/people",
+    "people-e2e": "apps/people-e2e",
+    "shell": "apps/shell",
+    "shell-e2e": "apps/shell-e2e",
+    "sso": "apps/sso",
+    "sso-e2e": "apps/sso-e2e",
+    "ui": "libs/ui",
+    "workspace": "apps/workspace",
+    "workspace-e2e": "apps/workspace-e2e"
+  }
 }
