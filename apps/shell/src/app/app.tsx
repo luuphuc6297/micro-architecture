@@ -13,46 +13,46 @@ const People = React.lazy(() => import('people/Module'));
 const Discussion = React.lazy(() => import('discussion/Module'));
 
 export function App() {
-  return (
-    <React.Suspense fallback={null}>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
+    return (
+        <React.Suspense fallback={null}>
+            <ul>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/about">About</Link>
+                </li>
 
-        <li>
-          <Link to="/sso">Sso</Link>
-        </li>
+                <li>
+                    <Link to="/sso">Sso</Link>
+                </li>
 
-        <li>
-          <Link to="/workspace">Workspace</Link>
-        </li>
+                <li>
+                    <Link to="/workspace">Workspace</Link>
+                </li>
 
-        <li>
-          <Link to="/people">People</Link>
-        </li>
+                <li>
+                    <Link to="/people">People</Link>
+                </li>
 
-        <li>
-          <Link to="/discussion">Discussion</Link>
-        </li>
-      </ul>
-      <Routes>
-        <Route path="/" element={<NxWelcome title="shell" />} />
-        <Route path="/about" element={<About />} />
+                <li>
+                    <Link to="/discussion">Discussion</Link>
+                </li>
+            </ul>
+            <Routes>
+                <Route path="/" element={<NxWelcome title="shell" />} />
+                <Route path="/about" element={<About />} />
 
-        <Route path="/sso" element={<Sso />} />
+                <Route path="/sso" element={<Sso />} />
 
-        <Route path="/workspace" element={<Workspace />} />
+                <Route path="/workspace" element={<Workspace />} />
 
-        <Route path="/people" element={<People />} />
+                <Route path="/people" element={<People />} />
 
-        <Route path="/discussion" element={<Discussion />} />
-      </Routes>
-    </React.Suspense>
-  );
+                <Route path="/discussion" element={<Discussion />} />
+            </Routes>
+        </React.Suspense>
+    );
 }
 
 export default App;
