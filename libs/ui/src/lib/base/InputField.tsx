@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { Error } from 'components/typography';
-import theme from 'configs/theme';
+// import { Error } from 'components/typography';
+// import theme from 'configs/theme';
 import React, { InputHTMLAttributes } from 'react';
 import { Control, useController } from 'react-hook-form';
 
@@ -66,23 +66,8 @@ export function InputField({
                 label={label}
                 inputProps={inputProps}
                 InputProps={InputProps}
-                sx={{
-                    '& .MuiOutlinedInput-root:hover': {
-                        '& > fieldset': {
-                            borderColor: `${theme.palette.primary}`,
-                        },
-                    },
-                    '& .MuiOutlinedInput-root.Mui-focused': {
-                        '& > fieldset': {
-                            borderColor: `${theme.palette.primary}`,
-                        },
-                    },
-                    '& .MuiOutlinedInput-root': {
-                        borderColor: `${theme.palette.primary}`,
-                    },
-                }}
             />
-            <Error error={true}>{error?.message || apiError}</Error>
+            {/* <Error error={true}>{error?.message || apiError}</Error> */}
         </React.Fragment>
     );
 }

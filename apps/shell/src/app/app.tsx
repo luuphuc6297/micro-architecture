@@ -1,7 +1,7 @@
 import * as React from 'react';
 import NxWelcome from './nx-welcome';
 import { Link, Route, Routes } from 'react-router-dom';
-
+import { SubmitButton } from '@micro-architecture-coaching-cloud/ui';
 const About = React.lazy(() => import('about/Module'));
 
 const Sso = React.lazy(() => import('sso/Module'));
@@ -17,7 +17,10 @@ export function App() {
         <React.Suspense fallback={null}>
             <ul>
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/">
+                        Home
+                        <SubmitButton>Haha</SubmitButton>
+                    </Link>
                 </li>
                 <li>
                     <Link to="/about">About</Link>

@@ -5,7 +5,6 @@ export * from './base/AutoComplete';
 export * from './base/CircularIndeterminate';
 export * from './base/InputField';
 export * from './base/LazyLoadContainer';
-export * from './base/SearchField';
 export * from './base/SendBtn';
 export * from './base/SenderIconBtn';
 export * from './base/SubmitButton';
