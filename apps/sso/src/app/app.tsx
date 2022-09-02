@@ -1,11 +1,15 @@
 import NxWelcome from './nx-welcome';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from '../store/store';
 
 export function App() {
     return (
-        <>
-            <NxWelcome title="sso" />
-            <div />
-        </>
+        <Provider store={store}>
+            <PersistGate persistor={persistor}>
+                <div>SSO here</div>
+            </PersistGate>
+        </Provider>
     );
 }
 

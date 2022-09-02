@@ -18,6 +18,7 @@ const coreLibraries = new Set([
     'react-dom',
     'react-router-dom',
     'react-redux',
+    'redux-persist',
     'react-query',
     'react-pin-field',
     'react-timezone-select',
