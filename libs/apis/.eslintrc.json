@@ -8,7 +8,14 @@
         },
         {
             "files": ["*.ts", "*.tsx"],
-            "rules": {}
+            "rules": {
+                "@nrwl/nx/enforce-module-boundaries": [
+                    "error",
+                    {
+                        // ...rule specific configuration
+                    }
+                ]
+            }
         },
         {
             "files": ["*.js", "*.jsx"],

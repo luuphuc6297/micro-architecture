@@ -3,11 +3,12 @@
 /**
  * @type {import('@nrwl/react/module-federation').ModuleFederationConfig}
  **/
+
 const moduleFederationConfig = {
-  name: 'sso',
-  exposes: {
-    './Module': './src/remote-entry.ts',
-  },
+    name: 'sso',
+    exposes: {
+        './Module': './src/remote-entry.ts',
+    },
 };
 
 module.exports = moduleFederationConfig;

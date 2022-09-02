@@ -1,10 +1,9 @@
-// import authSaga from 'features/auth/authSaga';
-// import setupPasswordSaga from 'features/auth/setupPasswordSaga';
-// import updateProfileSaga from 'features/auth/updateProfileSaga';
-// import verifyEmailSaga from 'features/auth/verifyEmailSaga';
-// import workspaceSaga from 'features/workspace/workSpaceSaga';
 import { all } from 'redux-saga/effects';
+import authSaga from '../features/saga/authSaga';
+import setupPasswordSaga from '../features/saga/setupPasswordSaga';
+import updateProfileSaga from '../features/saga/updateProfileSaga';
+import verifyEmailSaga from '../features/saga/verifyEmailSaga';
 
 export default function* rootSaga() {
-    yield all([]);
+    yield all([authSaga, setupPasswordSaga, updateProfileSaga, verifyEmailSaga]);
 }

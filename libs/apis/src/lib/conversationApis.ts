@@ -1,4 +1,4 @@
-import { Conversation, ItemResponse, ListResponse } from '../../../models/src/lib/models';
+import { Conversation, ItemResponse, ListResponse } from '@micro-architecture-coaching-cloud/models';
 import axiosRTC from './clients/axiosRTC';
 
 interface CreateConversationDataProps {

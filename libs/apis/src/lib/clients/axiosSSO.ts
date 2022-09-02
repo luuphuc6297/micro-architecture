@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { getToken } from '../../../../utils/src/lib/utils';
+import { getToken } from '@micro-architecture-coaching-cloud/utils';
 
 const axiosSSO = axios.create({
     baseURL: 'https://dev-sso-api.coachingworkspace.com/api',

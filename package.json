@@ -42,7 +42,7 @@
     "devDependencies": {
         "@nrwl/cli": "14.5.10",
         "@nrwl/cypress": "14.5.10",
-        "@nrwl/eslint-plugin-nx": "14.5.10",
+        "@nrwl/eslint-plugin-nx": "^14.6.3",
         "@nrwl/jest": "14.5.10",
         "@nrwl/linter": "14.5.10",
         "@nrwl/nx-cloud": "latest",

@@ -5,6 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Link, Route, Routes } from 'react-router-dom';
+
 import NxWelcome from './nx-welcome';
 const About = React.lazy(() => import('about/Module'));
 
@@ -69,6 +70,7 @@ export function App() {
 
                         <Route path="/discussion" element={<Discussion />} />
                     </Routes>
+
                     <CssBaseline />
                 </ThemeProvider>
             </QueryClientProvider>

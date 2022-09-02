@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { getTokenAuth } from '../../../../utils/src/lib/utils';
+import { getTokenAuth } from '@micro-architecture-coaching-cloud/utils';
 
 const axiosRTC = axios.create({
     baseURL: 'https://dev-rtc-api.coachingworkspace.com',

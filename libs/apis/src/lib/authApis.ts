@@ -8,7 +8,7 @@ import {
     UploadAvatar,
     Login,
     VerifyEmail,
-} from '../../../models/src/lib/models';
+} from '@micro-architecture-coaching-cloud/models';
 import axiosSSO from './clients/axiosSSO';
 
 export const authApis = {

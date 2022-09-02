@@ -1,9 +1,8 @@
 import { Action, combineReducers, compose, configureStore, ThunkAction } from '@reduxjs/toolkit';
-// import authReducer from 'features/auth/authSlice';
-// import setupPasswordReducer from 'features/auth/setupPasswordSlice';
-// import updateProfileReducer from 'features/auth/updateProfileSlice';
-// import verifyEmailReducer from 'features/auth/verifyEmailSlice';
-// import workspaceReducer from 'features/workspace/workSpaceSlice';
+import authReducer from '../features/slices/authSlice';
+import setupPasswordReducer from '../features/slices/setupPasswordSlice';
+import updateProfileReducer from '../features/slices/updateProfileSlice';
+import verifyEmailReducer from '../features/slices/verifyEmailSlice';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import createSagaMiddleware from 'redux-saga';
@@ -24,11 +23,10 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-    // auth: authReducer,
-    // verifyEmail: verifyEmailReducer,
-    // setupPassword: setupPasswordReducer,
-    // updateProfile: updateProfileReducer,
-    // workspace: workspaceReducer,
+    auth: authReducer,
+    verifyEmail: verifyEmailReducer,
+    setupPassword: setupPasswordReducer,
+    updateProfile: updateProfileReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();
@@ -37,7 +35,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
     reducer: persistedReducer,
-    middleware: (getDefaultMiddleware: (arg0: { serializableCheck: boolean; }) => any[]) =>
+    middleware: (getDefaultMiddleware: (arg0: { serializableCheck: boolean }) => any[]) =>
         getDefaultMiddleware({
             serializableCheck: false,
         }).concat(sagaMiddleware),

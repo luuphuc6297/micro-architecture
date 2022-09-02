@@ -5,7 +5,6 @@
         "about": "apps/about",
         "about-e2e": "apps/about-e2e",
         "apis": "libs/apis",
-        "assets": "libs/assets",
         "configs": "libs/configs",
         "discussion": "apps/discussion",
         "discussion-e2e": "apps/discussion-e2e",
