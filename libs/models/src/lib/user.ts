@@ -1,6 +1,7 @@
 import { Meta } from './common';
+import { WorkSpaces } from './workspace';
 
-interface TimeZone {
+export interface TimeZone {
     value: string;
     offset: number;
     abbrev: string;
@@ -55,4 +56,23 @@ export interface UserInMessage {
     lastName: string;
     updatedAt: string;
     _id: string;
+}
+export interface PayloadUser {
+    id: string;
+    iss?: string;
+    sub?: string;
+    type: string;
+    status: string;
+    timezone?: TimeZone;
+    createdAt?: string;
+    updatedAt?: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    phone?: string;
+    avatarUrl?: string;
+    setPassword: boolean;
+    bio?: string;
+    workspaces: WorkSpaces[];
+    token: string;
 }

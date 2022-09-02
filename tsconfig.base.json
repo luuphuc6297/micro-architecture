@@ -15,9 +15,9 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@micro-architecture-coaching-cloud/apis": ["libs/apis/src/index.ts"],
+            "@micro-architecture-coaching-cloud/assets": ["libs/assets/src/index.ts"],
             "@micro-architecture-coaching-cloud/configs": ["libs/configs/src/index.ts"],
-            "@micro-architecture-coaching-cloud/containers": ["libs/containers/src/index.ts"],
-            "@micro-architecture-coaching-cloud/layouts": ["libs/layouts/src/index.ts"],
             "@micro-architecture-coaching-cloud/models": ["libs/models/src/index.ts"],
             "@micro-architecture-coaching-cloud/ui": ["libs/ui/src/index.ts"],
             "@micro-architecture-coaching-cloud/utils": ["libs/utils/src/index.ts"]

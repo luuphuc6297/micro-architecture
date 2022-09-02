@@ -4,11 +4,11 @@
     "projects": {
         "about": "apps/about",
         "about-e2e": "apps/about-e2e",
+        "apis": "libs/apis",
+        "assets": "libs/assets",
         "configs": "libs/configs",
-        "containers": "libs/containers",
         "discussion": "apps/discussion",
         "discussion-e2e": "apps/discussion-e2e",
-        "layouts": "libs/layouts",
         "models": "libs/models",
         "people": "apps/people",
         "people-e2e": "apps/people-e2e",

@@ -1,20 +1,20 @@
 {
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "libs/layouts/src",
+    "sourceRoot": "libs/apis/src",
     "projectType": "library",
     "targets": {
         "lint": {
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
-                "lintFilePatterns": ["libs/layouts/**/*.ts"]
+                "lintFilePatterns": ["libs/apis/**/*.ts"]
             }
         },
         "test": {
             "executor": "@nrwl/jest:jest",
-            "outputs": ["coverage/libs/layouts"],
+            "outputs": ["coverage/libs/apis"],
             "options": {
-                "jestConfig": "libs/layouts/jest.config.ts",
+                "jestConfig": "libs/apis/jest.config.ts",
                 "passWithNoTests": true
             }
         }
