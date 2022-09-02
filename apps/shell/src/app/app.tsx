@@ -1,7 +1,11 @@
-import * as React from 'react';
-import NxWelcome from './nx-welcome';
-import { Link, Route, Routes } from 'react-router-dom';
+import { theme } from '@micro-architecture-coaching-cloud/configs';
 import { SubmitButton } from '@micro-architecture-coaching-cloud/ui';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import * as React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Link, Route, Routes } from 'react-router-dom';
+import NxWelcome from './nx-welcome';
 const About = React.lazy(() => import('about/Module'));
 
 const Sso = React.lazy(() => import('sso/Module'));
@@ -11,6 +15,15 @@ const Workspace = React.lazy(() => import('workspace/Module'));
 const People = React.lazy(() => import('people/Module'));
 
 const Discussion = React.lazy(() => import('discussion/Module'));
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            retry: 0,
+            refetchOnWindowFocus: false,
+        },
+    },
+});
 
 export function App() {
     return (
@@ -42,18 +55,23 @@ export function App() {
                     <Link to="/discussion">Discussion</Link>
                 </li>
             </ul>
-            <Routes>
-                <Route path="/" element={<NxWelcome title="shell" />} />
-                <Route path="/about" element={<About />} />
+            <QueryClientProvider client={queryClient}>
+                <ThemeProvider theme={theme}>
+                    <Routes>
+                        <Route path="/" element={<NxWelcome title="shell" />} />
+                        <Route path="/about" element={<About />} />
 
-                <Route path="/sso" element={<Sso />} />
+                        <Route path="/sso" element={<Sso />} />
 
-                <Route path="/workspace" element={<Workspace />} />
+                        <Route path="/workspace" element={<Workspace />} />
 
-                <Route path="/people" element={<People />} />
+                        <Route path="/people" element={<People />} />
 
-                <Route path="/discussion" element={<Discussion />} />
-            </Routes>
+                        <Route path="/discussion" element={<Discussion />} />
+                    </Routes>
+                    <CssBaseline />
+                </ThemeProvider>
+            </QueryClientProvider>
         </React.Suspense>
     );
 }
