@@ -15,7 +15,7 @@ axiosSSO.interceptors.request.use(
         const token = getToken();
         if (token) {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            config!.headers!.Authorization = `Bearer ${token}`;
+            config!.headers!['Authorization'] = `Bearer ${token}`;
         }
         return config;
     },

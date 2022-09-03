@@ -4,12 +4,13 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Link, Route, Routes } from 'react-router-dom';
-
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import Sso, { Login } from 'sso/Module';
 import NxWelcome from './nx-welcome';
+
 const About = React.lazy(() => import('about/Module'));
 
-const Sso = React.lazy(() => import('sso/Module'));
+// const Sso = React.lazy(() => import('sso/Module'));
 
 const Workspace = React.lazy(() => import('workspace/Module'));
 
@@ -29,46 +30,55 @@ const queryClient = new QueryClient({
 export function App() {
     return (
         <React.Suspense fallback={null}>
-            <ul>
-                <li>
+            <div style={{
+                width: '40%',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+            }}>
+                <div>
                     <Link to="/">
                         Home
                         <SubmitButton>Haha</SubmitButton>
                     </Link>
-                </li>
-                <li>
+                </div>
+                <div>
                     <Link to="/about">About</Link>
-                </li>
-
-                <li>
+                </div>
+                <div>
                     <Link to="/sso">Sso</Link>
-                </li>
-
-                <li>
+                </div>
+                <div>
                     <Link to="/workspace">Workspace</Link>
-                </li>
-
-                <li>
+                </div>
+                <div>
                     <Link to="/people">People</Link>
-                </li>
-
-                <li>
+                </div>
+                <div>
                     <Link to="/discussion">Discussion</Link>
-                </li>
-            </ul>
+                </div>
+            </div>
             <QueryClientProvider client={queryClient}>
                 <ThemeProvider theme={theme}>
                     <Routes>
                         <Route path="/" element={<NxWelcome title="shell" />} />
-                        <Route path="/about" element={<About />} />
+                        <Route path="about" element={<About />} />
+                        <Route path="sso" element={<Sso/>}>
+                            <Route index={true} element={<Navigate to='/sso/login'/>}></Route>
+                            <Route
+                                path='login'
+                                element={
+                                    <Login />
+                                }
+                            />
+                        </Route>
 
-                        <Route path="/sso" element={<Sso />} />
+                        <Route path="workspace" element={<Workspace />} />
 
-                        <Route path="/workspace" element={<Workspace />} />
+                        <Route path="people" element={<People />} />
 
-                        <Route path="/people" element={<People />} />
-
-                        <Route path="/discussion" element={<Discussion />} />
+                        <Route path="discussion" element={<Discussion />} />
                     </Routes>
 
                     <CssBaseline />

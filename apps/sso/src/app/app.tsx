@@ -10,19 +10,16 @@ export function App() {
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>
-                {/* <Routes> */}
-                    <Route path="/sso" element={<Outlet />}>
-                        <Route element={<Navigate to="/sso/login" />}>
-                            <Route
-                                path="sso/login"
-                                element={<Suspense fallback={<CircularIndeterminate />}>Login container</Suspense>}
-                            />
-                        </Route>
-                    </Route>
-                {/* </Routes> */}
+                <Outlet />
             </PersistGate>
         </Provider>
     );
 }
 
 export default App;
+
+export function Login() {
+    return (
+        <Suspense fallback={<CircularIndeterminate />}>Login container</Suspense>
+    );
+}

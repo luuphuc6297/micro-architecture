@@ -1,1 +1,1 @@
-export { default } from './app/app';
+export { default, Login } from './app/app';

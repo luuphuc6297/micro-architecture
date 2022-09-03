@@ -54,7 +54,7 @@
       },
       "configurations": {
         "development": {
-          "buildTarget": "sso:build:development"
+          "buildTarget": "sso:build:development --verbose"
         },
         "production": {
           "buildTarget": "sso:build:production",

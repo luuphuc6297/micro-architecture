@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-check
 
 const { withModuleFederation } = require('@nrwl/react/module-federation');
@@ -9,6 +10,7 @@ const path = require('path');
  **/
 const defaultConfig = {
     ...baseConfig,
+    // @ts-ignore
     resolve: {
         store: path.resolve(__dirname, 'src/store'),
     },
