@@ -1,10 +1,9 @@
-import NxWelcome from './nx-welcome';
+import { CircularIndeterminate } from '@micro-architecture-coaching-cloud/ui';
+import { Suspense } from 'react';
 import { Provider } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '../store/store';
-import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
-import { Suspense } from 'react';
-import { CircularIndeterminate } from '@micro-architecture-coaching-cloud/ui';
 
 export function App() {
     return (
@@ -19,7 +18,5 @@ export function App() {
 export default App;
 
 export function Login() {
-    return (
-        <Suspense fallback={<CircularIndeterminate />}>Login container</Suspense>
-    );
+    return <Suspense fallback={<CircularIndeterminate />}>Login container</Suspense>;
 }

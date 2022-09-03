@@ -30,13 +30,15 @@ const queryClient = new QueryClient({
 export function App() {
     return (
         <React.Suspense fallback={null}>
-            <div style={{
-                width: '40%',
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-            }}>
+            <div
+                style={{
+                    width: '40%',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                }}
+            >
                 <div>
                     <Link to="/">
                         Home
@@ -64,14 +66,9 @@ export function App() {
                     <Routes>
                         <Route path="/" element={<NxWelcome title="shell" />} />
                         <Route path="about" element={<About />} />
-                        <Route path="sso" element={<Sso/>}>
-                            <Route index={true} element={<Navigate to='/sso/login'/>}></Route>
-                            <Route
-                                path='login'
-                                element={
-                                    <Login />
-                                }
-                            />
+                        <Route path="sso" element={<Sso />}>
+                            <Route index={true} element={<Navigate to="/sso/login" />} />
+                            <Route path="login" element={<Login />} />
                         </Route>
 
                         <Route path="workspace" element={<Workspace />} />
