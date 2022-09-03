@@ -1,5 +1,4 @@
 import { ListResponse, Message } from '@micro-architecture-coaching-cloud/models';
-
 import axiosRTC from './clients/axiosRTC';
 
 export const messageApis = {

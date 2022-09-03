@@ -1,7 +1,7 @@
-import { authApis } from '@micro-architecture-coaching-cloud/apis';
-import { CurrentUser, ResponseUser, Login, WorkSpaces } from '@micro-architecture-coaching-cloud/models';
+import { Login, ResponseUser, WorkSpaces } from '@micro-architecture-coaching-cloud/models';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { authApis } from '../apis/authApis';
 import { authActions } from '../features/slices/authSlice';
 import { LoginPage } from '../pages';
 import { useAppDispatch } from '../store/hooks';

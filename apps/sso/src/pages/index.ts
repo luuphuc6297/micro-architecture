@@ -1,5 +1,6 @@
 export { default as LoginPage } from './Login';
 export { default as RegisterPage } from './Register';
-export { default as SetupPassword } from './SetupPassword';
+export { default as SetupPasswordPage } from './SetupPassword';
+export { default as VerifyCodePage } from './VerifyCode';
 
 

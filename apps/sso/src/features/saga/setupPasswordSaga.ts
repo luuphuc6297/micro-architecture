@@ -1,4 +1,4 @@
-import { authApis } from '@micro-architecture-coaching-cloud/apis';
+import { authApis } from '../../apis/authApis';
 import { ResponseSetupPassword } from '@micro-architecture-coaching-cloud/models';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';

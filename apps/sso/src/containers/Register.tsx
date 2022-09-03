@@ -1,8 +1,8 @@
-import { authApis } from '@micro-architecture-coaching-cloud/apis';
 import { Register } from '@micro-architecture-coaching-cloud/models';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { authApis } from '../apis/authApis';
 import { RegisterPage } from '../pages';
 // import { history } from 'utils';
 

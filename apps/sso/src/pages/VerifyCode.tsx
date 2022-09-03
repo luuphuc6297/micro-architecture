@@ -1,10 +1,9 @@
-import { authApis } from '@micro-architecture-coaching-cloud/apis';
 import { CustomCaption, CustomizedPinField, SmallCaption, SubmitButton } from '@micro-architecture-coaching-cloud/ui';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import { Box, Button, Typography } from '@mui/material';
 import { styled } from '@mui/system';
+import { authApis } from '../apis/authApis';
 import { useAppDispatch } from '../store/hooks';
-
 import { ResponseVerifiedEmail } from '@micro-architecture-coaching-cloud/models';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';

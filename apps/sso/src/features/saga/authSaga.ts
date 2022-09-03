@@ -1,4 +1,4 @@
-import { authApis } from '@micro-architecture-coaching-cloud/apis';
+import { authApis } from '../../apis/authApis';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { ResponseUser } from '@micro-architecture-coaching-cloud/models';
 import { USER_STATUS } from '@micro-architecture-coaching-cloud/utils';

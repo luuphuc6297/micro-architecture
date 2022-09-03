@@ -21,3 +21,4 @@ export * from './customized/SocialButton';
 export * from './customized/TimeZoneField';
 export * from './customized/UploadAvatar';
 
+export { default as theme } from './theme';

@@ -7,7 +7,7 @@ const baseConfig = require('./module-federation.config');
  * @type {import('@nrwl/react/module-federation').ModuleFederationConfig}
  **/
 const defaultConfig = {
-  ...baseConfig,
+    ...baseConfig,
 };
 
 module.exports = withModuleFederation(defaultConfig);

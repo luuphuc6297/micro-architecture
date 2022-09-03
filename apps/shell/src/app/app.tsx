@@ -1,4 +1,4 @@
-import { theme } from '@micro-architecture-coaching-cloud/configs';
+import { theme } from '@micro-architecture-coaching-cloud/ui';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
