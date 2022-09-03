@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '../store/store';
+import { LoginContainer } from '../containers';
 
 export function App() {
     return (
@@ -18,5 +19,9 @@ export function App() {
 export default App;
 
 export function Login() {
-    return <Suspense fallback={<CircularIndeterminate />}>Login container</Suspense>;
+    return (
+        <Suspense fallback={<CircularIndeterminate />}>
+            <LoginContainer />
+        </Suspense>
+    );
 }
