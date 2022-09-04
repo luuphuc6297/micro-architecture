@@ -14,6 +14,7 @@
         "sso": "apps/sso",
         "sso-e2e": "apps/sso-e2e",
         "ui": "libs/ui",
+        "ui-e2e": "apps/ui-e2e",
         "utils": "libs/utils",
         "workspace": "apps/workspace",
         "workspace-e2e": "apps/workspace-e2e"

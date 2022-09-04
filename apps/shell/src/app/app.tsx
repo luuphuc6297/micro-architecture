@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Sso, { Login } from 'sso/Module';
 import NxWelcome from './nx-welcome';
 
@@ -46,6 +47,17 @@ export function App() {
 
                     <CssBaseline />
                 </ThemeProvider>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </QueryClientProvider>
         </React.Suspense>
     );

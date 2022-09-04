@@ -13,12 +13,16 @@ export * from './customized/CustomCaption';
 export * from './customized/CustomDivider';
 export * from './customized/CustomizedPin';
 export * from './customized/CustomizedPinField';
+export * from './customized/Error';
 export * from './customized/Header';
+export * from './customized/PhoneField';
 export * from './customized/PWDRequisite';
 export * from './customized/SmallCaption';
 export * from './customized/Snackbar';
 export * from './customized/SocialButton';
+export * from './customized/TextFiledLabel';
 export * from './customized/TimeZoneField';
 export * from './customized/UploadAvatar';
 
 export { default as theme } from './theme';
+

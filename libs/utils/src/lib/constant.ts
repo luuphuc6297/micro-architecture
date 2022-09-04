@@ -2,8 +2,6 @@ import { blue, cyan, deepPurple, green, grey, indigo, lightBlue, teal } from '@m
 
 export const TINY_MCE_KEY = '6hcownlou0x604gjtu5fy0d35zhd2osurzojn0n5eemutva8';
 
-
-
 export const ENDPOINTS = {
     CONVERSATIONS: '/conversations',
     GET_USERS: '/users',
@@ -25,7 +23,6 @@ export const USER_STATUS = {
     NEWBIE: 'newbie',
     ACTIVE: 'active',
 };
-
 
 export const CLIENT_EVENT = {
     REDIRECT_UNIVERSAL: 'REDIRECT_UNIVERSAL',
