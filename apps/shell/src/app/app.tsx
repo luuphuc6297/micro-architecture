@@ -33,7 +33,15 @@ export function App() {
                     <Routes>
                         <Route path="/" element={<NxWelcome title="shell" />} />
                         <Route path="about" element={<About />} />
-                        <Route path="sso" element={<Sso />}>
+                        <Route
+                            path="sso"
+                            element={
+                                <>
+                                    <NxWelcome title="sso" />
+                                    <Sso />
+                                </>
+                            }
+                        >
                             <Route index={true} element={<Navigate to="/sso/login" />} />
                             <Route path="login" element={<Login />} />
                         </Route>
