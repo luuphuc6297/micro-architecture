@@ -17,6 +17,7 @@ const LoginContainer = () => {
         password: '',
     } as Login;
 
+    console.log('config for workflow');
     // const { storeUser, storeWorkSpace, storeWorkSpaces } = useStore();
 
     const handleLogin = async (formValues: Login) => {
