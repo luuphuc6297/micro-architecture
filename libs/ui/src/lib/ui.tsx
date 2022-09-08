@@ -23,6 +23,7 @@ export * from './customized/SocialButton';
 export * from './customized/TextFiledLabel';
 export * from './customized/TimeZoneField';
 export * from './customized/UploadAvatar';
+export * from './context';
 
 export { default as theme } from './theme';
 

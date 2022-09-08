@@ -19,7 +19,6 @@
         "@reduxjs/toolkit": "^1.8.5",
         "axios": "^0.27.2",
         "core-js": "^3.6.5",
-        "events": "^3.3.0",
         "html-react-parser": "^3.0.4",
         "lodash": "^4.17.21",
         "material-ui-phone-number-2": "^1.2.7",
@@ -40,7 +39,8 @@
         "socket.io-client": "^4.5.2",
         "tslib": "^2.3.0",
         "yup": "^0.32.11",
-        "zustand": "^4.1.1"
+        "zustand": "^4.1.1",
+        "@types/events": "^3.0.0"
     },
     "devDependencies": {
         "@babel/core": "7.12.13",

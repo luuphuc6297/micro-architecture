@@ -16,9 +16,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
     React.useEffect(() => {
         if (!isAuth) {
-            navigate('/login', { replace: true });
+            navigate('/sso/login', { replace: true });
         } else {
-            navigate('/home', { replace: true });
+            navigate('/workspace', { replace: true });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isAuth]);

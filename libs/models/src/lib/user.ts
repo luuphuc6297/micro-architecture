@@ -8,6 +8,7 @@ export interface TimeZone {
 }
 
 export interface AttributesUser {
+    token: string;
     email: string;
     status: string;
     firstName: string;
@@ -15,7 +16,7 @@ export interface AttributesUser {
     phone?: string;
     timezone?: TimeZone;
     avatarUrl?: string;
-    password: string;
+    password?: string;
     bio?: string;
     setPassword: boolean;
 }

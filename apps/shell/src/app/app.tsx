@@ -1,20 +1,11 @@
-import { theme } from '@micro-architecture-coaching-cloud/ui';
+import { InfoContext, InfoContextProperty, theme } from '@micro-architecture-coaching-cloud/ui';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Sso, { Login } from 'sso/Module';
-import NxWelcome from './nx-welcome';
-
-const About = React.lazy(() => import('about/Module'));
-
-const Workspace = React.lazy(() => import('workspace/Module'));
-
-const People = React.lazy(() => import('people/Module'));
-
-const Discussion = React.lazy(() => import('discussion/Module'));
+import Router from './routes';
+import { eb, CLIENT_EVENT } from '@micro-architecture-coaching-cloud/utils';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -26,39 +17,41 @@ const queryClient = new QueryClient({
 });
 
 export function App() {
+    const [info, setInfo] = React.useState<InfoContextProperty>({});
+
+    const loadinfo = (data: InfoContextProperty) => {
+        console.log("IN");
+        setInfo(data);
+    };
+
+    React.useEffect(() => {
+        eb.on(CLIENT_EVENT.SYNC_DATA, loadinfo);
+        return () => {
+            eb.off(CLIENT_EVENT.SYNC_DATA, loadinfo);
+        }
+    });
+
     return (
         <React.Suspense fallback={null}>
-            <QueryClientProvider client={queryClient}>
-                <ThemeProvider theme={theme}>
-                    <Routes>
-                        <Route path="/" element={<NxWelcome title="shell" />} />
-                        <Route path="about" element={<About />} />
-                        <Route path="sso" element={<Sso />}>
-                            <Route index={true} element={<Navigate to="/sso/login" />} />
-                            <Route path="login" element={<Login />} />
-                        </Route>
-
-                        <Route path="workspace" element={<Workspace />} />
-
-                        <Route path="people" element={<People />} />
-
-                        <Route path="discussion" element={<Discussion />} />
-                    </Routes>
-
-                    <CssBaseline />
-                </ThemeProvider>
-                <ToastContainer
-                    position="top-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                />
-            </QueryClientProvider>
+            <InfoContext.Provider value={info}>
+                <QueryClientProvider client={queryClient}>
+                    <ThemeProvider theme={theme}>
+                        <Router />
+                        <CssBaseline />
+                    </ThemeProvider>
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
+                </QueryClientProvider>
+            </InfoContext.Provider>
         </React.Suspense>
     );
 }

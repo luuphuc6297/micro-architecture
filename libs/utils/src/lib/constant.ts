@@ -29,6 +29,7 @@ export const CLIENT_EVENT = {
     ID_CONVERSATION: 'ID_CONVERSATION',
     CHECK_AUTHEN: 'CHECK_AUTHEN',
     ON_OFF_MODAL: 'ON_OFF_MODAL',
+    SYNC_DATA: 'SYNC_DATA',
 };
 
 export const Colors = [
