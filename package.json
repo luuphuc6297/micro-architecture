@@ -39,8 +39,7 @@
         "socket.io-client": "^4.5.2",
         "tslib": "^2.3.0",
         "yup": "^0.32.11",
-        "zustand": "^4.1.1",
-        "@types/events": "^3.0.0"
+        "zustand": "^4.1.1"
     },
     "devDependencies": {
         "@babel/core": "7.12.13",

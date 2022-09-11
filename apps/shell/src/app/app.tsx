@@ -5,7 +5,7 @@ import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
 import Router from './routes';
-import { eb, CLIENT_EVENT } from '@micro-architecture-coaching-cloud/utils';
+import { CLIENT_EVENT } from '@micro-architecture-coaching-cloud/utils';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -18,18 +18,6 @@ const queryClient = new QueryClient({
 
 export function App() {
     const [info, setInfo] = React.useState<InfoContextProperty>({});
-
-    const loadinfo = (data: InfoContextProperty) => {
-        console.log("IN");
-        setInfo(data);
-    };
-
-    React.useEffect(() => {
-        eb.on(CLIENT_EVENT.SYNC_DATA, loadinfo);
-        return () => {
-            eb.off(CLIENT_EVENT.SYNC_DATA, loadinfo);
-        }
-    });
 
     return (
         <React.Suspense fallback={null}>
