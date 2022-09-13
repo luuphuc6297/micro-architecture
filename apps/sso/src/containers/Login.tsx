@@ -6,7 +6,7 @@ import { authActions } from '../features/slices/authSlice';
 import { LoginPage } from '../pages';
 import { useAppDispatch } from '../store/hooks';
 // import { useStore } from 'shell/zustand';
-import { CLIENT_EVENT, eb, USER_STATUS } from '@micro-architecture-coaching-cloud/utils';
+import { CLIENT_EVENT, USER_STATUS } from '@micro-architecture-coaching-cloud/utils';
 import { first } from 'lodash';
 
 const LoginContainer = () => {
@@ -48,19 +48,19 @@ const LoginContainer = () => {
 
                     // storeWorkSpaces(mappingWorkSpace);
                 }
+                const widgetEvent = new CustomEvent(CLIENT_EVENT.SYNC_DATA, { user, workspace: first(mappingWorkSpace), workspaces: mappingWorkSpace } as any);
+                window.dispatchEvent(widgetEvent);
+                // dispatch(authActions.loginSuccess(response));
 
-                eb.emit(CLIENT_EVENT.SYNC_DATA, { user, workspace: first(mappingWorkSpace), workspaces: mappingWorkSpace })
-                dispatch(authActions.loginSuccess(response));
-
-                switch (response?.payload.status) {
-                    case USER_STATUS.ACTIVE:
-                        navigate('/workspace');
-                        toast.success('Login successful');
-                        break;
-                    case USER_STATUS.NEWBIE:
-                        navigate('/update-profile');
-                        break;
-                }
+                // switch (response?.payload.status) {
+                //     case USER_STATUS.ACTIVE:
+                //         navigate('/workspace');
+                //         toast.success('Login successful');
+                //         break;
+                //     case USER_STATUS.NEWBIE:
+                //         navigate('/update-profile');
+                //         break;
+                // }
             }
         } catch (error: any) {
             if (error?.response?.status === 401) {

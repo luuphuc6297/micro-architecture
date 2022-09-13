@@ -19,6 +19,17 @@ const queryClient = new QueryClient({
 export function App() {
     const [info, setInfo] = React.useState<InfoContextProperty>({});
 
+    const eventHandler = (data: any) => {
+        console.log("IN", data);
+    }
+
+    React.useEffect(() => {
+        window.addEventListener(CLIENT_EVENT.SYNC_DATA, eventHandler);
+        return () => {
+            window.removeEventListener(CLIENT_EVENT.SYNC_DATA, eventHandler);
+        }
+    });
+
     return (
         <React.Suspense fallback={null}>
             <InfoContext.Provider value={info}>
