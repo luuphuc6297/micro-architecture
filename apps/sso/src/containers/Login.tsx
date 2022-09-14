@@ -6,7 +6,7 @@ import { authActions } from '../features/slices/authSlice';
 import { LoginPage } from '../pages';
 import { useAppDispatch } from '../store/hooks';
 // import { useStore } from 'shell/zustand';
-import { CLIENT_EVENT, USER_STATUS } from '@micro-architecture-coaching-cloud/utils';
+import { CLIENT_EVENT, eb, USER_STATUS } from '@micro-architecture-coaching-cloud/utils';
 import { first } from 'lodash';
 
 const LoginContainer = () => {
