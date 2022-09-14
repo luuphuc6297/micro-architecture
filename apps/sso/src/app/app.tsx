@@ -24,10 +24,10 @@ export function Register() {
     return <RegisterContainer />;
 }
 
-export const VerifyCode = () => {
+export function VerifyCode() {
     return <VerifyCodeContainer />;
 };
 
-export const SetupPassword = () => {
+export function SetupPassword() {
     return <SetupPasswordContainer />;
 };
