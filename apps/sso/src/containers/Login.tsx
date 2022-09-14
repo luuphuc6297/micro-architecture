@@ -12,7 +12,7 @@ import { first } from 'lodash';
 const LoginContainer = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    
+
     const initialValues: Login = {
         email: '',
         password: '',
@@ -48,7 +48,11 @@ const LoginContainer = () => {
 
                     // storeWorkSpaces(mappingWorkSpace);
                 }
-                const widgetEvent = new CustomEvent(CLIENT_EVENT.SYNC_DATA, { user, workspace: first(mappingWorkSpace), workspaces: mappingWorkSpace } as any);
+                const widgetEvent = new CustomEvent(CLIENT_EVENT.SYNC_DATA, {
+                    user,
+                    workspace: first(mappingWorkSpace),
+                    workspaces: mappingWorkSpace,
+                } as any);
                 window.dispatchEvent(widgetEvent);
                 // dispatch(authActions.loginSuccess(response));
 

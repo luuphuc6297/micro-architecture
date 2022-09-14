@@ -1,9 +1,10 @@
 import { CircularIndeterminate } from '@micro-architecture-coaching-cloud/ui';
 import React from 'react';
 import { Navigate, RouteObject, useRoutes } from 'react-router-dom';
-import { Login } from 'sso/Module';
+
 import { AuthLayout } from '../layouts';
 
+const Login = React.lazy(() => import('sso/Module'));
 const Sso = React.lazy(() => import('sso/Module'));
 const Workspace = React.lazy(() => import('workspace/Module'));
 const People = React.lazy(() => import('people/Module'));

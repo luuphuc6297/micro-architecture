@@ -3,8 +3,8 @@ import { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
-import { persistor, store } from '../store/store';
 import { LoginContainer } from '../containers';
+import { persistor, store } from '../store/store';
 
 export function App() {
     return (
@@ -19,9 +19,10 @@ export function App() {
 export default App;
 
 export function Login() {
+    console.log('Render');
     return (
-        <Suspense fallback={<CircularIndeterminate />}>
+        // <Suspense fallback={<CircularIndeterminate />}>
             <LoginContainer />
-        </Suspense>
+        // </Suspense>
     );
 }

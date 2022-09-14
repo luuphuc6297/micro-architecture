@@ -14,7 +14,6 @@ function* handleLogin({ payload }: PayloadAction<any>) {
         });
         if (response?.token) {
             localStorage.setItem('access_token', response.token);
-            console.log(response);
             yield put(authActions.loginSuccess(response));
             switch (response?.payload.status) {
                 case USER_STATUS.ACTIVE:

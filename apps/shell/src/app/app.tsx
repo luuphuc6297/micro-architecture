@@ -1,11 +1,11 @@
 import { InfoContext, InfoContextProperty, theme } from '@micro-architecture-coaching-cloud/ui';
+import { CLIENT_EVENT } from '@micro-architecture-coaching-cloud/utils';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
 import Router from './routes';
-import { CLIENT_EVENT } from '@micro-architecture-coaching-cloud/utils';
 
 const queryClient = new QueryClient({
     defaultOptions: {
