@@ -90,7 +90,7 @@ const LoginPage = ({ initialValues, onSubmit }: LoginFormProps) => {
     };
 
     const onRedirect = React.useCallback(() => {
-        navigate('/auth/register');
+        navigate('/sso/register');
     }, []);
 
     return (

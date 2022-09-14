@@ -14,7 +14,7 @@ function* setupPassword({ payload }: PayloadAction<any>) {
         });
         if (response?.attributes) {
             yield put(setupPasswordActions.confirmPasswordSuccess(response));
-            payload?.navigate('/update-profile');
+            payload?.navigate('/sso/update-profile');
             toast.success(`Setup password successful`);
         } else {
             toast.error(`${response?.message}`);

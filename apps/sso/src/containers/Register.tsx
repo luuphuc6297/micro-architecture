@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { authApis } from '../apis/authApis';
 import { RegisterPage } from '../pages';
-// import { history } from 'utils';
 
 const RegisterContainer = () => {
     const [apiError, setApiError] = React.useState<string>();
@@ -18,7 +17,7 @@ const RegisterContainer = () => {
             const response: any = await authApis.sendEmail(formValues);
             if (response?.attributes) {
                 toast.success(`${response.attributes?.message}`);
-                navigate('/verify-code');
+                navigate('/sso/verify-code');
             }
         } catch (error: any) {
             if (error?.response?.status === 400) {

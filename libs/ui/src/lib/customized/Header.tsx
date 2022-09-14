@@ -82,13 +82,13 @@ export function Header({ headerText, redirectBtn, onRedirect }: HeaderProps) {
 
     function renderNavigateBtn(): any {
         switch (location.pathname) {
-            case '/login':
+            case '/sso/login':
                 return null;
-            case '/register':
+            case '/sso/register':
                 return null;
-            case '/verify-code':
-            case '/setup-password':
-            case '/update-profile':
+            case '/sso/verify-code':
+            case '/sso/setup-password':
+            case '/sso/update-profile':
                 return renderBackBtn();
         }
     }

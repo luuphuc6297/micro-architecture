@@ -46,7 +46,7 @@ const UpdateProfilePage = ({ initialValues, onSubmit }: UpdateProfileProps) => {
 
     React.useEffect(() => {
         if (!token) {
-            navigate('/register');
+            navigate('/sso/register');
         }
     }, [navigate, token]);
 

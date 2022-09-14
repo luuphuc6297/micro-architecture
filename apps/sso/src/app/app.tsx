@@ -1,9 +1,7 @@
-import { CircularIndeterminate } from '@micro-architecture-coaching-cloud/ui';
-import { Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
-import { LoginContainer } from '../containers';
+import { LoginContainer, RegisterContainer, SetupPasswordContainer, VerifyCodeContainer } from '../containers';
 import { persistor, store } from '../store/store';
 
 export function App() {
@@ -19,10 +17,17 @@ export function App() {
 export default App;
 
 export function Login() {
-    console.log('Render');
-    return (
-        // <Suspense fallback={<CircularIndeterminate />}>
-            <LoginContainer />
-        // </Suspense>
-    );
+    return <LoginContainer />;
 }
+
+export function Register() {
+    return <RegisterContainer />;
+}
+
+export const VerifyCode = () => {
+    return <VerifyCodeContainer />;
+};
+
+export const SetupPassword = () => {
+    return <SetupPasswordContainer />;
+};

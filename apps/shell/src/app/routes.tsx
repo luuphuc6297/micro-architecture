@@ -2,9 +2,9 @@ import { CircularIndeterminate } from '@micro-architecture-coaching-cloud/ui';
 import React from 'react';
 import { Navigate, RouteObject, useRoutes } from 'react-router-dom';
 
+import { Login, Register, SetupPassword } from 'sso/Module';
 import { AuthLayout } from '../layouts';
 
-const Login = React.lazy(() => import('sso/Module'));
 const Sso = React.lazy(() => import('sso/Module'));
 const Workspace = React.lazy(() => import('workspace/Module'));
 const People = React.lazy(() => import('people/Module'));
@@ -33,7 +33,33 @@ const Router = () => {
                             path: 'register',
                             element: (
                                 <React.Suspense fallback={<CircularIndeterminate />}>
-                                    <div>Register</div>
+                                    <Register />
+                                </React.Suspense>
+                            ),
+                        },
+                        {
+                            path: 'setup-password',
+                            element: (
+                                <React.Suspense fallback={<CircularIndeterminate />}>
+                                    <SetupPassword />
+                                </React.Suspense>
+                            ),
+                        },
+                        {
+                            path: 'verify-code',
+                            element: (
+                                <React.Suspense fallback={<CircularIndeterminate />}>
+                                    {/* <VerifyCodeContainer /> */}
+                                    <div>Verify</div>
+                                </React.Suspense>
+                            ),
+                        },
+                        {
+                            path: 'update-profile',
+                            element: (
+                                <React.Suspense fallback={<CircularIndeterminate />}>
+                                    {/* <UpdateProfileContainer /> */}
+                                    <div>Update</div>
                                 </React.Suspense>
                             ),
                         },

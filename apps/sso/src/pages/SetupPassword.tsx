@@ -37,7 +37,7 @@ const SetupPasswordPage = ({ initialValues, onSubmit }: SetupPasswordProps) => {
 
     React.useEffect(() => {
         if (!token) {
-            navigate('/register');
+            navigate('/sso/register');
         }
     }, [navigate, token]);
 
