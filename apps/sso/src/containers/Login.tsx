@@ -54,17 +54,17 @@ const LoginContainer = () => {
                     workspaces: mappingWorkSpace,
                 } as any);
                 window.dispatchEvent(widgetEvent);
-                // dispatch(authActions.loginSuccess(response));
+                dispatch(authActions.loginSuccess(response));
 
-                // switch (response?.payload.status) {
-                //     case USER_STATUS.ACTIVE:
-                //         navigate('/workspace');
-                //         toast.success('Login successful');
-                //         break;
-                //     case USER_STATUS.NEWBIE:
-                //         navigate('/update-profile');
-                //         break;
-                // }
+                switch (response?.payload.status) {
+                    case USER_STATUS.ACTIVE:
+                        navigate('/workspace');
+                        toast.success('Login successful');
+                        break;
+                    case USER_STATUS.NEWBIE:
+                        navigate('/update-profile');
+                        break;
+                }
             }
         } catch (error: any) {
             if (error?.response?.status === 401) {
