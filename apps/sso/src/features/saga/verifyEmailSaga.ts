@@ -15,7 +15,7 @@ function* verifyEmail({ payload }: PayloadAction<any>) {
             yield put(verifyEmailActions.confirmCodeSuccess(response));
 
             window.localStorage.setItem('access_token', response?.attributes?.data?.token);
-            payload?.navigate('/setup-password');
+            payload?.navigate('/sso/setup-password');
             toast.success(`Verify email success`);
         } else {
             yield put(verifyEmailActions.confirmCodeFailed(response?.attributes?.message ?? ''));

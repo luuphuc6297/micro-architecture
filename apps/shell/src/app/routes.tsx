@@ -1,8 +1,7 @@
 import { CircularIndeterminate } from '@micro-architecture-coaching-cloud/ui';
 import React from 'react';
 import { Navigate, RouteObject, useRoutes } from 'react-router-dom';
-
-import { Login, Register, SetupPassword } from 'sso/Module';
+import { Login, Register, SetupPassword, VerifyCode } from 'sso/Module';
 import { AuthLayout } from '../layouts';
 
 const Sso = React.lazy(() => import('sso/Module'));
@@ -38,19 +37,18 @@ const Router = () => {
                             ),
                         },
                         {
-                            path: 'setup-password',
+                            path: 'verify-code',
                             element: (
                                 <React.Suspense fallback={<CircularIndeterminate />}>
-                                    <SetupPassword />
+                                    <VerifyCode />
                                 </React.Suspense>
                             ),
                         },
                         {
-                            path: 'verify-code',
+                            path: 'setup-password',
                             element: (
                                 <React.Suspense fallback={<CircularIndeterminate />}>
-                                    {/* <VerifyCodeContainer /> */}
-                                    <div>Verify</div>
+                                    <SetupPassword />
                                 </React.Suspense>
                             ),
                         },

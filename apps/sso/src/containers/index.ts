@@ -4,4 +4,3 @@ export { default as SetupPasswordContainer } from './SetupPassword';
 export { default as UpdateProfileContainer } from './UpdateProfile';
 export { default as VerifyCodeContainer } from './VerifyCode';
 
-

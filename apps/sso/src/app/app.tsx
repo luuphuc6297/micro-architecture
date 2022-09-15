@@ -26,8 +26,8 @@ export function Register() {
 
 export function VerifyCode() {
     return <VerifyCodeContainer />;
-};
+}
 
 export function SetupPassword() {
     return <SetupPasswordContainer />;
-};
+}
