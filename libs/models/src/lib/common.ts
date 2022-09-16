@@ -27,3 +27,8 @@ export interface ListResponse {
     meta: MetaParams;
     data: ItemResponse[] & Message[];
 }
+
+export interface ItemFormat {
+    fullDate: string;
+    fullTime: string;
+}

@@ -13,7 +13,7 @@ const coreLibraries = new Set([
     'events',
     'html-react-parser',
     'lodash',
-    'moment',
+    'moment-timezone',
     'react',
     'react-dom',
     'react-router-dom',

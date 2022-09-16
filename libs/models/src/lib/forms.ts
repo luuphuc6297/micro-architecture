@@ -64,3 +64,12 @@ export interface UpdateProfile {
     bio?: string;
     navigate?: any;
 }
+
+export interface SendMessagesForm {
+    messages: string;
+}
+
+export interface CreateConversationForm {
+    title: string;
+    selectedId: string[];
+}
