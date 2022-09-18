@@ -363,3 +363,29 @@ export const formatDistance = (time: string) => {
         return 'now';
     }
 };
+
+export const getTimeMess = (createdAtMessage: string) => {
+    return moment(createdAtMessage).format('DD MM YYYY');
+};
+
+export const getTimeLastMess = (createdAtLastMessage: string) => {
+    return createdAtLastMessage ? moment(createdAtLastMessage).format('DD MM YYYY') : '';
+};
+
+export const getDurationMessage = (createdAtMessage: string) => {
+    return moment(createdAtMessage).fromNow();
+};
+
+export const renderTextInMessage = (durationMessage: string, createdAtMessage: string) => {
+    if (
+        durationMessage.indexOf('hour') !== -1 ||
+        durationMessage.indexOf('minute') !== -1 ||
+        durationMessage.indexOf('second') !== -1
+    ) {
+        return 'Today';
+    } else if (durationMessage === 'a day ago') {
+        return 'Yesterday';
+    } else {
+        return moment(createdAtMessage).format('DD MMM YYYY');
+    }
+};

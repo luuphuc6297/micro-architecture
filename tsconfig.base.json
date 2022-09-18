@@ -16,6 +16,8 @@
         "baseUrl": ".",
         "paths": {
             "@micro-architecture-coaching-cloud/apis": ["libs/apis/src/index.ts"],
+            "@micro-architecture-coaching-cloud/common": ["libs/common/src/index.ts"],
+            "@micro-architecture-coaching-cloud/commons": ["libs/commons/src/index.ts"],
             "@micro-architecture-coaching-cloud/configs": ["libs/configs/src/index.ts"],
             "@micro-architecture-coaching-cloud/models": ["libs/models/src/index.ts"],
             "@micro-architecture-coaching-cloud/ui": ["libs/ui/src/index.ts"],

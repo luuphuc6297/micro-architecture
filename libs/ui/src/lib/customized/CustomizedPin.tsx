@@ -39,6 +39,7 @@ export const CustomizedPin = React.forwardRef(({ value, onChange, disabled }: an
             onChange?.(input);
         }
     };
+
     return (
         <>
             <input

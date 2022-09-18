@@ -4,6 +4,7 @@
     "projects": {
         "about": "apps/about",
         "about-e2e": "apps/about-e2e",
+        "common": "libs/common",
         "discussion": "apps/discussion",
         "discussion-e2e": "apps/discussion-e2e",
         "models": "libs/models",

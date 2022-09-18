@@ -1,6 +1,5 @@
-import PinField from 'react-pin-field';
 import { styled } from '@mui/system';
-import * as React from 'react';
+import PinField from 'react-pin-field';
 
 interface PinFieldProps {
     length?: number;
@@ -48,4 +47,5 @@ const StyledPinFiled = styled(PinField)({
 export const CustomizedPinField = ({ onChange }: PinFieldProps) => {
     return <StyledPinFiled length={defaultProps.length} validate={defaultProps.validate} onChange={onChange} />;
 };
-export {};
+export { };
+

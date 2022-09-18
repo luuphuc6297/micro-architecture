@@ -1,5 +1,5 @@
-
-import { isString, split, head, upperCase } from 'lodash';
+import { Message } from '@micro-architecture-coaching-cloud/models';
+import { get, head, isString, split, upperCase } from 'lodash';
 import { Colors } from './constant';
 
 export const getQueryParam = (query: string) => {
@@ -70,4 +70,22 @@ export const timeout = (ms: any) => {
 
 export const isActiveHotKey = (e: KeyboardEvent) => {
     return e.shiftKey || e.ctrlKey || e.metaKey;
+};
+
+export const getCreatedAtLastMessage = (lastMessage: any) => {
+    return get(lastMessage, 'meta.createdAt', '');
+};
+
+export const getUserIdFormMessage = (message: Message) => {
+    return get(message, 'attributes.user._id', '');
+};
+
+export const getUserIdFormLastMessage = (lastMessage: any) => {
+    return get(lastMessage, 'attributes.user._id', '');
+};
+
+export const getFullName = (message: Message) => {
+    const { firstName, lastName } = get(message, 'attributes.user', {});
+
+    return `${firstName} ${lastName}`;
 };

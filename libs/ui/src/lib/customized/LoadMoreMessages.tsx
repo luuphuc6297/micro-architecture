@@ -1,14 +1,16 @@
 import { AttributesUser, Message, UserSliceState } from '@micro-architecture-coaching-cloud/models';
-import { BoxMessage, DateMessage, TypingChat } from '@micro-architecture-coaching-cloud/ui';
 import { Box, CircularProgress } from '@mui/material';
 import { styled } from '@mui/system';
-import { useConversationStore } from 'app/conversation-store';
-import { ConversationSlice, MessageSlice, TypingSlice } from 'app/slices';
-import { useStore } from 'app/store';
+// import { useConversationStore } from 'app/conversation-store';
+// import { ConversationSlice, MessageSlice, TypingSlice } from 'app/slices';
+// import { useStore } from 'app/store';
 import { chain, isEqual, keys, orderBy } from 'lodash';
 import moment from 'moment';
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { BoxMessages } from './BoxMessages';
+import { DateMessages } from './DataMessages';
+import { TypingChat } from './TypingChat';
 
 interface LoadMoreMessagesProps {
     loadMessages: () => void;
@@ -44,6 +46,7 @@ export const LoadMoreMessages = ({ loadMessages }: LoadMoreMessagesProps) => {
     React.useEffect(() => {
         setLoading(false);
     }, []);
+
     React.useEffect(() => {
         const data = messages.data;
         setCurrentData(data);
@@ -67,23 +70,6 @@ export const LoadMoreMessages = ({ loadMessages }: LoadMoreMessagesProps) => {
         }
     }, [currentData]);
 
-    // const renderMessageItem = () => {
-    //     return (
-    //         <>
-    //             {currentData.map((message: Message, index: number) => {
-    //                 const nextMessage = index === 0 ? {} : currentData[index - 1];
-    //                 const lastMessage = index === currentData.length - 1 ? {} : currentData[index + 1];
-
-    //                 return (
-    //                     <Box key={message._id}>
-    //                         <BoxMessage message={message} lastMessage={lastMessage} nextMessage={nextMessage} />
-    //                     </Box>
-    //                 );
-    //             })}
-    //         </>
-    //     );
-    // };
-
     const renderMessageItem = () => {
         const groupByDate = chain(
             orderBy(
@@ -94,6 +80,7 @@ export const LoadMoreMessages = ({ loadMessages }: LoadMoreMessagesProps) => {
         )
             .groupBy('createdAt')
             .value();
+
         return (
             <>
                 {keys(groupByDate).map((date: string, index: number) => {
@@ -101,13 +88,13 @@ export const LoadMoreMessages = ({ loadMessages }: LoadMoreMessagesProps) => {
                         const lastMessage = index === groupByDate[date].length - 1 ? {} : groupByDate[date][index + 1];
                         return (
                             <Box key={message._id}>
-                                <BoxMessage message={message} lastMessage={lastMessage} />
+                                <BoxMessages message={message} lastMessage={lastMessage} />
                             </Box>
                         );
                     });
                     return (
                         <Box key={`${date}${index}`}>
-                            <DateMessage key={date} createdAtMessage={date} createdAtLastMessage={''} />
+                            <DateMessages key={date} createdAtMessage={date} createdAtLastMessage={''} />
                             {messagesInDay}
                         </Box>
                     );
