@@ -8,10 +8,13 @@ export * from './base/LazyLoadContainer';
 export * from './base/SendBtn';
 export * from './base/SenderIconBtn';
 export * from './base/SubmitButton';
-export * from './context';
+// Customized
+export * from './customized/ArrowBack';
+export * from './customized/AvatarConversation';
 export * from './customized/Banner';
 export * from './customized/BoxMessages';
 export * from './customized/ConversationItem';
+export * from './customized/Conversations';
 export * from './customized/CustomCaption';
 export * from './customized/CustomDivider';
 export * from './customized/CustomizedPin';

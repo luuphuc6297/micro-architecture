@@ -1,18 +1,25 @@
+import { CurrentUser, LastMessage, Message } from '@micro-architecture-coaching-cloud/models';
+import {
+    getCreatedAtLastMessage,
+    getFullName,
+    getUserIdFormLastMessage,
+    getUserIdFormMessage,
+} from '@micro-architecture-coaching-cloud/utils';
 import { Box, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { styled } from '@mui/system';
-import { useStore } from 'app/store';
-import { AvatarConversation, ServerMessages, TimeDisplayedConversation } from '@micro-architecture-coaching-cloud/ui';
 import parse from 'html-react-parser';
-import { get, isEqual } from 'lodash';
-import { Message, UserSliceState } from '@micro-architecture-coaching-cloud/models';
+import { isEqual } from 'lodash';
 import moment from 'moment';
 import React from 'react';
-
+import { AvatarConversation } from './AvatarConversation';
+import { ServerMessages } from './ServerMessages';
+import { TimeDisplayedConversation } from './TimeDisplayedConversation';
 interface BoxMessageProps {
+    currentUser: CurrentUser;
     children?: React.ReactNode;
     message: Message;
-    lastMessage: any;
+    lastMessage: LastMessage;
 }
 
 const StyledBoxMessage = styled(Box)<{ render?: boolean }>(({ theme, render }) => ({
@@ -65,27 +72,23 @@ export const StyledWrapperAvatar = styled(Box)(({ theme }) => ({
     height: '40px',
 }));
 
-export const BoxMessage = ({ message, lastMessage }: BoxMessageProps) => {
-    const currentUser = useStore((state: UserSliceState | any) => state.user);
-
-    const createdAtLastMessage = get(lastMessage, 'meta.createdAt', '');
+export const BoxMessages = ({ currentUser, message, lastMessage }: BoxMessageProps) => {
+    const createdAtLastMessage = getCreatedAtLastMessage(lastMessage);
 
     const {
         meta: { createdAt },
         attributes: { content = '', generator },
     } = message;
 
-    const userIdMess = get(message, 'attributes.user._id', '');
+    const userIdMess = getUserIdFormMessage(message);
 
-    const userIdLastMess = get(lastMessage, 'attributes.user._id', '');
+    const userIdLastMess = getUserIdFormLastMessage(lastMessage);
 
     const diff = moment(createdAt).diff(moment(createdAtLastMessage), 'minutes');
 
     const showImage = userIdMess !== userIdLastMess || (diff > 5 && diff < 1440);
 
-    const { firstName = '', lastName = '' } = get(message, 'attributes.user', {});
-
-    const name = `${firstName} ${lastName}`;
+    const name = getFullName(message);
 
     return (
         // eslint-disable-next-line react/jsx-no-useless-fragment

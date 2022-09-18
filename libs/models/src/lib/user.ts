@@ -8,7 +8,7 @@ export interface TimeZone {
 }
 
 export interface AttributesUser {
-    _id: any;
+    _id: string;
     token: string;
     email: string;
     status: string;

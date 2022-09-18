@@ -3,33 +3,33 @@ import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  IconButton,
-  ListItem,
-  ListItemAvatar,
-  ListItemIcon,
-  ListItemSecondaryAction,
-  ListItemText,
-  Menu,
-  MenuItem
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    IconButton,
+    ListItem,
+    ListItemAvatar,
+    ListItemIcon,
+    ListItemSecondaryAction,
+    ListItemText,
+    Menu,
+    MenuItem,
 } from '@mui/material';
 import { useConversationStore } from 'app/conversation-store';
 import { ConversationSlice } from 'app/slices';
 import { useStore } from 'app/store';
 import { get, truncate } from 'lodash';
-import { IItemResponse, UserSliceState, WorkSpaceSliceState } from 'models';
-import { CLIENT_EVENT, extractContent, timeout } from 'utils';
-import eb from 'utils/events';
-import { AvatarCustom } from '../AvatarConversation/AvatarCustom';
-import { StyledWrapperAvatar } from '../BoxMessage';
+import { ItemResponse, UserSliceState, WorkSpaceSliceState } from '@micro-architecture-coaching-cloud/models';
+import { CLIENT_EVENT, extractContent, timeout, customEvent } from '@micro-architecture-coaching-cloud/utils';
+// import customEvent from 'utils/events';
+import { AvatarCustom } from './AvatarCustom';
+import { StyledWrapperAvatar } from './BoxMessages';
 
 interface IConversationItemProps {
-    conversation: IItemResponse;
+    conversation: ItemResponse;
     index: number;
     handleListItemClick: (id: string) => void;
 }
@@ -72,7 +72,7 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
         await timeout(500);
         const dialogRemoveConversation: any = document.getElementById('dialog-remove-conversation');
         settings.appendChild(dialogRemoveConversation);
-        eb.emit(CLIENT_EVENT.ON_OFF_MODAL, false);
+        customEvent.emit(CLIENT_EVENT.ON_OFF_MODAL, false);
     };
 
     const handleClose = () => {
@@ -109,9 +109,9 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
     };
 
     React.useEffect(() => {
-        eb.on(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
+        customEvent.on(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
         return () => {
-            eb.off(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
+            customEvent.off(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
         };
     });
 

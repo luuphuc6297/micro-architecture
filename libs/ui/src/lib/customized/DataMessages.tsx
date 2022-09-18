@@ -1,5 +1,10 @@
+import {
+  getDurationMessage,
+  getTimeLastMess,
+  getTimeMess,
+  renderTextInMessage
+} from '@micro-architecture-coaching-cloud/utils';
 import { Divider } from '@mui/material';
-import moment from 'moment';
 import React from 'react';
 
 interface IDateMessageProps {
@@ -7,24 +12,11 @@ interface IDateMessageProps {
     createdAtLastMessage: string;
 }
 
-export const DateMessage = ({ createdAtMessage, createdAtLastMessage }: IDateMessageProps) => {
-    const timeMess = moment(createdAtMessage).format('DD MM YYYY');
-    const timeLastMess = createdAtLastMessage ? moment(createdAtLastMessage).format('DD MM YYYY') : '';
-    const durationMessage = moment(createdAtMessage).fromNow();
+export const DateMessages = ({ createdAtMessage, createdAtLastMessage }: IDateMessageProps) => {
+    const timeMess = getTimeMess(createdAtMessage);
+    const timeLastMess = getTimeLastMess(createdAtLastMessage);
+    const durationMessage = getDurationMessage(createdAtMessage);
 
-    const renderTextInMessage = () => {
-        if (
-            durationMessage.indexOf('hour') !== -1 ||
-            durationMessage.indexOf('minute') !== -1 ||
-            durationMessage.indexOf('second') !== -1
-        ) {
-            return 'Today';
-        } else if (durationMessage === 'a day ago') {
-            return 'Yesterday';
-        } else {
-            return moment(createdAtMessage).format('DD MMM YYYY');
-        }
-    };
-
-    return <React.Fragment>{timeMess !== timeLastMess && <Divider>{renderTextInMessage()}</Divider>}</React.Fragment>;
+    const renderText = renderTextInMessage(durationMessage, createdAtMessage);
+    return <React.Fragment>{timeMess !== timeLastMess && <Divider>{renderText}</Divider>}</React.Fragment>;
 };
