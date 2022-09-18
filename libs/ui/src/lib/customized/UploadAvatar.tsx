@@ -83,6 +83,8 @@ const StyledInputUpload = styled('input')(({ theme }) => ({
 
 export const UploadAvatar = ({ avatarUrl, percent }: UploadAvatarProps) => {
     // const dispatch = useAppDispatch();
+
+  console.log('test');
     const [files, setFiles] = React.useState<any>([]);
 
     React.useEffect(() => {
