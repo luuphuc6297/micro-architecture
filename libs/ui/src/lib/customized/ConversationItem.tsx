@@ -71,7 +71,7 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
         await timeout(500);
         const dialogRemoveConversation: any = document.getElementById('dialog-remove-conversation');
         settings.appendChild(dialogRemoveConversation);
-        const widgetEvent = new CustomEvent(CLIENT_EVENT.ON_OFF_MODAL, false);
+        const widgetEvent = new CustomEvent(CLIENT_EVENT.ON_OFF_MODAL, false as any);
         window.dispatchEvent(widgetEvent);
     };
 
@@ -104,12 +104,12 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
     //     }
     // };
 
-    const loadModal = (value: boolean) => {
+    const loadModal = (value: any) => {
         setHidden(value);
     };
 
     React.useEffect(() => {
-        window.addEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal, boolean);
+        window.addEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
         return () => {
             window.removeEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
         };
