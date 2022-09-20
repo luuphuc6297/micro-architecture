@@ -13,7 +13,7 @@ import { ConversationSlice } from '../../features/slices/conversations';
 
 // import { SocketContext } from 'services';
 import { RTCSocketContext } from '@micro-architecture-coaching-cloud/common';
-import { CLIENT_EVENT, customEvent, getTokenAuth } from '@micro-architecture-coaching-cloud/utils';
+import { CLIENT_EVENT, getTokenAuth } from '@micro-architecture-coaching-cloud/utils';
 import { Socket } from 'socket.io-client';
 
 const CreateConversationContainer = () => {
@@ -51,7 +51,8 @@ const CreateConversationContainer = () => {
             const resolve = await allPromise;
 
             if (resolve) {
-                customEvent.emit(CLIENT_EVENT.REDIRECT_UNIVERSAL, { route: '/conversations' });
+                const widgetEvent = new CustomEvent(CLIENT_EVENT.REDIRECT_UNIVERSAL, { route: '/conversations' } as any);
+                window.dispatchEvent(widgetEvent);
             }
             setLoading(false);
         } catch (e) {

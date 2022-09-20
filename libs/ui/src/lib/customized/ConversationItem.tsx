@@ -23,8 +23,7 @@ import {
 // import { useStore } from 'app/store';
 import { get, truncate } from 'lodash';
 import { ItemResponse, UserSliceState, WorkSpaceSliceState } from '@micro-architecture-coaching-cloud/models';
-import { CLIENT_EVENT, extractContent, timeout, customEvent } from '@micro-architecture-coaching-cloud/utils';
-// import customEvent from 'utils/events';
+import { CLIENT_EVENT, extractContent, timeout } from '@micro-architecture-coaching-cloud/utils';
 import { AvatarCustom } from './AvatarCustom';
 import { StyledWrapperAvatar } from './BoxMessages';
 
@@ -72,7 +71,8 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
         await timeout(500);
         const dialogRemoveConversation: any = document.getElementById('dialog-remove-conversation');
         settings.appendChild(dialogRemoveConversation);
-        customEvent.emit(CLIENT_EVENT.ON_OFF_MODAL, false);
+        const widgetEvent = new CustomEvent(CLIENT_EVENT.ON_OFF_MODAL, false);
+        window.dispatchEvent(widgetEvent);
     };
 
     const handleClose = () => {
@@ -109,9 +109,9 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
     };
 
     React.useEffect(() => {
-        customEvent.on(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
+        window.addEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal, boolean);
         return () => {
-            customEvent.off(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
+            window.removeEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
         };
     });
 

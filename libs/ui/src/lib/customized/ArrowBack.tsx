@@ -1,4 +1,4 @@
-import { CLIENT_EVENT, customEvent } from '@micro-architecture-coaching-cloud/utils';
+import { CLIENT_EVENT } from '@micro-architecture-coaching-cloud/utils';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { IconButton } from '@mui/material';
 import { styled } from '@mui/system';
@@ -24,7 +24,8 @@ export const ArrowBack = ({ eventTypeId, onClick }: ArrowBackProps) => {
 
     const goBackEventTypes = () => {
         if (routes.length > 1) {
-            customEvent.emit(CLIENT_EVENT.REDIRECT_UNIVERSAL, { isBack: true });
+            const widgetEvent = new CustomEvent(CLIENT_EVENT.REDIRECT_UNIVERSAL, { isBack: true } as any);
+            window.dispatchEvent(widgetEvent);
         }
     };
 

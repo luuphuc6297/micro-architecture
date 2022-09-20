@@ -1,4 +1,4 @@
-import { CLIENT_EVENT, customEvent } from '@micro-architecture-coaching-cloud/utils';
+import { CLIENT_EVENT } from '@micro-architecture-coaching-cloud/utils';
 import { Box, Button, List, Paper, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 // import { useConversationStore } from 'app/conversation-store';
@@ -39,12 +39,16 @@ export const ConversationsUI = () => {
     // const loading = useConversationStore((state: ConversationSlice) => state.loading);
 
     const goToConversation = (id: string) => {
-        customEvent.emit(CLIENT_EVENT.ID_CONVERSATION, id);
-        customEvent.emit(CLIENT_EVENT.REDIRECT_UNIVERSAL, { route: '/conversations' });
+        const widgetEvent1 = new CustomEvent(CLIENT_EVENT.ID_CONVERSATION, id as any);
+        window.dispatchEvent(widgetEvent1);
+
+        const widgetEvent = new CustomEvent(CLIENT_EVENT.REDIRECT_UNIVERSAL, { route: '/conversations' } as any);
+        window.dispatchEvent(widgetEvent);
     };
 
     const createConversation = () => {
-        customEvent.emit(CLIENT_EVENT.REDIRECT_UNIVERSAL, { route: '/create-conversation' });
+        const widgetEvent = new CustomEvent(CLIENT_EVENT.REDIRECT_UNIVERSAL, { route: '/create-conversations' } as any);
+        window.dispatchEvent(widgetEvent);
     };
 
     // const elmItem = take(conversations.data, 2).map((conversation: ItemResponse, index: number) => {
