@@ -9,4 +9,4 @@ export const socket: Socket<ServerToClientEvents, ClientToServerEvents> = io(
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
-export const SocketContext = React.createContext();
+export const RTCSocketContext = React.createContext();

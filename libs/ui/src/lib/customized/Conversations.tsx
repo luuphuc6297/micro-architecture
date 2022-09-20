@@ -1,15 +1,15 @@
 import { CLIENT_EVENT, customEvent } from '@micro-architecture-coaching-cloud/utils';
 import { Box, Button, List, Paper, Typography } from '@mui/material';
 import { styled } from '@mui/system';
-import { useConversationStore } from 'app/conversation-store';
-import { ConversationSlice } from 'app/slices';
+// import { useConversationStore } from 'app/conversation-store';
+// import { ConversationSlice } from 'app/slices';
 import { isNull, take } from 'lodash';
 import React from 'react';
 import { ListItemLazy } from './ListItemLazy';
 
 import { ItemResponse } from '@micro-architecture-coaching-cloud/models';
 import { ConversationItem } from './ConversationItem';
-import './style.scss';
+// import './style.scss';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
     padding: 16,
@@ -34,9 +34,9 @@ const StyledStartConversationBtn = styled(Button)(({ theme }) => ({
 }));
 
 export const ConversationsUI = () => {
-    const conversations = useConversationStore((state: ConversationSlice) => state.conversations);
+    // const conversations = useConversationStore((state: ConversationSlice) => state.conversations);
 
-    const loading = useConversationStore((state: ConversationSlice) => state.loading);
+    // const loading = useConversationStore((state: ConversationSlice) => state.loading);
 
     const goToConversation = (id: string) => {
         customEvent.emit(CLIENT_EVENT.ID_CONVERSATION, id);
@@ -47,24 +47,25 @@ export const ConversationsUI = () => {
         customEvent.emit(CLIENT_EVENT.REDIRECT_UNIVERSAL, { route: '/create-conversation' });
     };
 
-    const elmItem = take(conversations.data, 2).map((conversation: ItemResponse, index: number) => {
-        return (
-            <React.Fragment key={index}>
-                {!isNull(conversation) && (
-                    <ConversationItem
-                        key={index}
-                        index={index}
-                        conversation={conversation}
-                        handleListItemClick={goToConversation}
-                    />
-                )}
-            </React.Fragment>
-        );
-    });
+    // const elmItem = take(conversations.data, 2).map((conversation: ItemResponse, index: number) => {
+    //     return (
+    //         <React.Fragment key={index}>
+    //             {!isNull(conversation) && (
+    //                 <ConversationItem
+    //                     key={index}
+    //                     index={index}
+    //                     conversation={conversation}
+    //                     handleListItemClick={goToConversation}
+    //                 />
+    //             )}
+    //         </React.Fragment>
+    //     );
+    // });
 
     const loadingItem = [1, 2].map((item: number) => {
         return <ListItemLazy key={item} />;
     });
+
     return (
         <StyledPaper className="conversations">
             <StyledBox>
@@ -72,7 +73,7 @@ export const ConversationsUI = () => {
                 <StyledSeeAllBtn color="primary">See all</StyledSeeAllBtn>
             </StyledBox>
             <List component="nav" aria-label="communication">
-                {!loading ? elmItem : loadingItem}
+                {/* {!loading ? elmItem : loadingItem} */}
             </List>
             <StyledStartConversationBtn variant="outlined" onClick={createConversation} color="primary">
                 Start conversation

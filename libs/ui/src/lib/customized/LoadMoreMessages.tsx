@@ -1,4 +1,10 @@
-import { AttributesUser, Message, UserSliceState } from '@micro-architecture-coaching-cloud/models';
+import {
+    AttributesUser,
+    CurrentUser,
+    LastMessage,
+    Message,
+    UserSliceState,
+} from '@micro-architecture-coaching-cloud/models';
 import { Box, CircularProgress } from '@mui/material';
 import { styled } from '@mui/system';
 // import { useConversationStore } from 'app/conversation-store';
@@ -13,6 +19,7 @@ import { DateMessages } from './DataMessages';
 import { TypingChat } from './TypingChat';
 
 interface LoadMoreMessagesProps {
+    currentUser: CurrentUser;
     loadMessages: () => void;
 }
 
@@ -28,47 +35,46 @@ const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
     marginTop: 16,
 }));
 
-export const LoadMoreMessages = ({ loadMessages }: LoadMoreMessagesProps) => {
+export const LoadMoreMessages = ({ currentUser, loadMessages }: LoadMoreMessagesProps) => {
     const [currentData, setCurrentData] = React.useState<Message[]>([]);
     const [oldData, setOldData] = React.useState<Message[]>([]);
-
     // const serverMessages = useConversationStore((state: ConversationSlice) => state.serverMessages);
-    const messages = useConversationStore((state: MessageSlice) => state.messages);
-    const typing = useConversationStore((state: TypingSlice) => state.typing);
-    const currentUser = useStore((state: UserSliceState | any) => state.user);
+    // const messages = useConversationStore((state: MessageSlice) => state.messages);
+    // const typing = useConversationStore((state: TypingSlice) => state.typing);
+    // const currentUser = useStore((state: UserSliceState | any) => state.user);
 
-    const setLoading = useConversationStore((state: ConversationSlice) => state.setLoading);
+    // const setLoading = useConversationStore((state: ConversationSlice) => state.setLoading);
 
     const [more, setMore] = React.useState<boolean>(false);
 
     const elmContent: any = document.getElementById('scrollable-box');
 
-    React.useEffect(() => {
-        setLoading(false);
-    }, []);
+    // React.useEffect(() => {
+    //     setLoading(false);
+    // }, []);
 
-    React.useEffect(() => {
-        const data = messages.data;
-        setCurrentData(data);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [messages.data.length]);
+    // React.useEffect(() => {
+    //     const data = messages.data;
+    //     setCurrentData(data);
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [messages.data.length]);
 
-    React.useEffect(() => {
-        const count = messages.meta.count;
+    // React.useEffect(() => {
+    //     // const count = messages.meta.count;
 
-        if (!isEqual(currentData, oldData)) {
-            if (currentData.length - oldData.length === 1) {
-                elmContent.scrollTo({
-                    top: elmContent.scrollHeight - elmContent.clientHeight,
-                });
-            }
-            setOldData(currentData);
-        } else {
-            if (count !== 0 && count - currentData.length === 0 && more) {
-                setMore(false);
-            }
-        }
-    }, [currentData]);
+    //     if (!isEqual(currentData, oldData)) {
+    //         if (currentData.length - oldData.length === 1) {
+    //             elmContent.scrollTo({
+    //                 top: elmContent.scrollHeight - elmContent.clientHeight,
+    //             });
+    //         }
+    //         setOldData(currentData);
+    //     } else {
+    //         if (count !== 0 && count - currentData.length === 0 && more) {
+    //             setMore(false);
+    //         }
+    //     }
+    // }, [currentData]);
 
     const renderMessageItem = () => {
         const groupByDate = chain(
@@ -85,10 +91,11 @@ export const LoadMoreMessages = ({ loadMessages }: LoadMoreMessagesProps) => {
             <>
                 {keys(groupByDate).map((date: string, index: number) => {
                     const messagesInDay = groupByDate[date].map((message: Message, index: number) => {
-                        const lastMessage = index === groupByDate[date].length - 1 ? {} : groupByDate[date][index + 1];
+                        const lastMessage: any =
+                            index === groupByDate[date].length - 1 ? {} : groupByDate[date][index + 1];
                         return (
                             <Box key={message._id}>
-                                <BoxMessages message={message} lastMessage={lastMessage} />
+                                <BoxMessages message={message} lastMessage={lastMessage} currentUser={currentUser} />
                             </Box>
                         );
                     });
@@ -117,9 +124,9 @@ export const LoadMoreMessages = ({ loadMessages }: LoadMoreMessagesProps) => {
                 }
             >
                 {renderMessageItem()}
-                {typing.map((user: AttributesUser) => {
+                {/* {typing.map((user: AttributesUser) => {
                     return user && user._id !== currentUser.id && <TypingChat user={user} />;
-                })}
+                })} */}
             </InfiniteScroll>
         </StyledBoxLoadMore>
     );

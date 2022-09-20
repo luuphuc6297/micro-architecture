@@ -31,6 +31,8 @@ export const correctTimeTyping = (time: string) => {
         epochTime = moment(_time, 'hh:mm').valueOf();
         return moment(epochTime).format('LT');
     }
+
+    return null;
 };
 
 export const formatTime = (time: string) => {

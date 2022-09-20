@@ -1,7 +1,3 @@
-import { ConversationSlice } from '../../features/slices/conversations';
-import { useStore } from '../../features/cc-zustand-store';
-import { CreateConversation, LazyLoadContainer } from '@micro-architecture-coaching-cloud/ui';
-import { isEmpty } from 'lodash';
 import {
     ClientToServerEvents,
     Conversation,
@@ -9,12 +5,16 @@ import {
     ServerToClientEvents,
     WorkSpaceSliceState,
 } from '@micro-architecture-coaching-cloud/models';
+import { LazyLoadContainer } from '@micro-architecture-coaching-cloud/ui';
+import { isEmpty } from 'lodash';
 import React from 'react';
+import { useStore } from '../../features/cc-zustand-store';
+import { ConversationSlice } from '../../features/slices/conversations';
 
-import { SocketContext } from 'services';
+// import { SocketContext } from 'services';
+import { RTCSocketContext } from '@micro-architecture-coaching-cloud/common';
+import { CLIENT_EVENT, customEvent, getTokenAuth } from '@micro-architecture-coaching-cloud/utils';
 import { Socket } from 'socket.io-client';
-import { CLIENT_EVENT, getTokenAuth } from '@micro-architecture-coaching-cloud/utils';
-import eb from '';
 
 const CreateConversationContainer = () => {
     const token = getTokenAuth();
@@ -23,7 +23,8 @@ const CreateConversationContainer = () => {
         title: '',
     } as CreateConversationForm;
 
-    const socket: Socket<ClientToServerEvents, ServerToClientEvents> | unknown | any = React.useContext(SocketContext);
+    const socket: Socket<ClientToServerEvents, ServerToClientEvents> | unknown | any =
+        React.useContext(RTCSocketContext);
 
     const loading = useStore((state) => state.loading);
     const workspace = useStore((state: WorkSpaceSliceState | any) => state.workspace);
@@ -50,7 +51,7 @@ const CreateConversationContainer = () => {
             const resolve = await allPromise;
 
             if (resolve) {
-                eb.emit(CLIENT_EVENT.REDIRECT_UNIVERSAL, { route: '/conversations' });
+                customEvent.emit(CLIENT_EVENT.REDIRECT_UNIVERSAL, { route: '/conversations' });
             }
             setLoading(false);
         } catch (e) {
@@ -69,7 +70,8 @@ const CreateConversationContainer = () => {
 
     const renderCreateConversationPage = () => {
         if (!loading && !isEmpty(users.data)) {
-            return <CreateConversation initialValues={initialValues} onSubmit={handleCreateConversation} />;
+            return <></>;
+            // return <CreateConversation initialValues={initialValues} onSubmit={handleCreateConversation} />;
         } else {
             return <LazyLoadContainer width="100%" height="100%" />;
         }
