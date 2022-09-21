@@ -80,7 +80,7 @@ export const BoxMessages = ({ currentUser, message, lastMessage }: BoxMessagePro
         attributes: { content = '', generator },
     } = message;
 
-    const userIdMess = getUserIdFormMessage(message);
+    const userIdMess: string = getUserIdFormMessage(message);
 
     const userIdLastMess = getUserIdFormLastMessage(lastMessage);
 

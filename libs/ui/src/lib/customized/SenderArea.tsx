@@ -113,7 +113,6 @@ export const SenderArea = () => {
                 onEnter={(evt: any) => console.log('e', evt)}
                 placeholder="Type a message and press ENTER to send..."
             />
-
             {length === 0 ? <AttachBtn /> : <SenderIconBtn onClick={() => console.log('handle send message')} />}
         </StyledSenderAreaWrapper>
     );

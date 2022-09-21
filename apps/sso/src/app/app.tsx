@@ -20,14 +20,14 @@ export function Login() {
     return <LoginContainer />;
 }
 
-export function Register() {
-    return <RegisterContainer />;
-}
+// export function Register() {
+//     return <RegisterContainer />;
+// }
 
-export function VerifyCode() {
-    return <VerifyCodeContainer />;
-}
+// export function VerifyCode() {
+//     return <VerifyCodeContainer />;
+// }
 
-export function SetupPassword() {
-    return <SetupPasswordContainer />;
-}
+// export function SetupPassword() {
+//     return <SetupPasswordContainer />;
+// }
