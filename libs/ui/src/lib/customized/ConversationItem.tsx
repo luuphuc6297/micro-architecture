@@ -107,7 +107,7 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
     //     }
     // };
 
-    const loadModal = (value: boolean) => {
+    const loadModal = (value: any) => {
         setHidden(value);
     };
 
