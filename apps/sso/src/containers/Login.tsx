@@ -56,6 +56,7 @@ const LoginContainer = () => {
                     workspaces: mappingWorkSpace,
                 } as any);
                 window.dispatchEvent(widgetEvent);
+
                 dispatch(authActions.loginSuccess(response));
 
                 switch (response?.payload.status) {

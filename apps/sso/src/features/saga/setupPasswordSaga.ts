@@ -1,8 +1,8 @@
-import { authApis } from '../../apis/authApis';
 import { ResponseSetupPassword } from '@micro-architecture-coaching-cloud/models';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { put, takeLatest } from 'redux-saga/effects';
+import { authApis } from '../../apis/authApis';
 import { setupPasswordActions } from '../slices/setupPasswordSlice';
 
 function* setupPassword({ payload }: PayloadAction<any>) {

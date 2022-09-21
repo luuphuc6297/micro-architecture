@@ -65,14 +65,17 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
         setOpen(true);
         handleCloseMenu();
         const el = document.getElementById('mess-universal');
+
         if (!el) return;
         const settings = el.querySelector('.MuiBox-root .conversations');
         if (!settings) return;
         await timeout(500);
         const dialogRemoveConversation: any = document.getElementById('dialog-remove-conversation');
+
         settings.appendChild(dialogRemoveConversation);
-        const widgetEvent = new CustomEvent(CLIENT_EVENT.ON_OFF_MODAL, false);
-        window.dispatchEvent(widgetEvent);
+        // const widgetEvent = new CustomEvent(CLIENT_EVENT.ON_OFF_MODAL, false);
+
+        // window.dispatchEvent(widgetEvent);
     };
 
     const handleClose = () => {
@@ -108,12 +111,12 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
         setHidden(value);
     };
 
-    React.useEffect(() => {
-        window.addEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal, boolean);
-        return () => {
-            window.removeEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
-        };
-    });
+    // React.useEffect(() => {
+    //     window.addEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal, boolean);
+    //     return () => {
+    //         window.removeEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal, boolean);
+    //     };
+    // });
 
     return (
         <React.Fragment>

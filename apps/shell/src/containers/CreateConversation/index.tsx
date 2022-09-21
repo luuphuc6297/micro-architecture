@@ -12,7 +12,7 @@ import { useStore } from '../../features/cc-zustand-store';
 import { ConversationSlice } from '../../features/slices/conversations';
 
 // import { SocketContext } from 'services';
-import { RTCSocketContext } from '@micro-architecture-coaching-cloud/common';
+// import { RTCSocketContext } from '@micro-architecture-coaching-cloud/common';
 import { CLIENT_EVENT, getTokenAuth } from '@micro-architecture-coaching-cloud/utils';
 import { Socket } from 'socket.io-client';
 
@@ -23,8 +23,8 @@ const CreateConversationContainer = () => {
         title: '',
     } as CreateConversationForm;
 
-    const socket: Socket<ClientToServerEvents, ServerToClientEvents> | unknown | any =
-        React.useContext(RTCSocketContext);
+    // const socket: Socket<ClientToServerEvents, ServerToClientEvents> | unknown | any =
+    //     React.useContext(RTCSocketContext);
 
     const loading = useStore((state) => state.loading);
     const workspace = useStore((state: WorkSpaceSliceState | any) => state.workspace);
