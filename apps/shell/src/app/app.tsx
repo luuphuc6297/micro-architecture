@@ -1,4 +1,5 @@
-import { InfoContext, InfoContextProperty, theme } from '@micro-architecture-coaching-cloud/ui';
+import { InfoContext, InfoContextProperty } from '@micro-architecture-coaching-cloud/common';
+import { theme } from '@micro-architecture-coaching-cloud/ui';
 import { CLIENT_EVENT } from '@micro-architecture-coaching-cloud/utils';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
@@ -18,6 +19,17 @@ const queryClient = new QueryClient({
 
 export function App() {
     const [info, setInfo] = React.useState<InfoContextProperty>({});
+
+    const eventHandler = (data: any) => {
+        console.log('IN', data);
+    };
+
+    React.useEffect(() => {
+        window.addEventListener(CLIENT_EVENT.SYNC_DATA, eventHandler);
+        return () => {
+            window.removeEventListener(CLIENT_EVENT.SYNC_DATA, eventHandler);
+        };
+    });
 
     return (
         <React.Suspense fallback={null}>

@@ -1,7 +1,7 @@
 import { FormControl } from '@mui/material';
 import { styled } from '@mui/system';
-// import { Error } from 'components/Base';
-// import { TextFiledLabel } from 'components/Common';
+import { Error } from './Error';
+import { TextFiledLabel } from './TextFiledLabel';
 import { InputHTMLAttributes } from 'react';
 import { Control, useController } from 'react-hook-form';
 import TimezoneSelect from 'react-timezone-select';
@@ -29,10 +29,10 @@ export const TimeZoneField = ({ name, control, label, htmlFor, defaultValues }: 
 
     return (
         <>
-            {/* <TextFiledLabel htmlFor={htmlFor}>{label}</TextFiledLabel> */}
+            <TextFiledLabel htmlFor={htmlFor}>{label}</TextFiledLabel>
             <CustomFormControl error={invalid} variant="outlined" fullWidth margin="normal" size="small">
                 <TimezoneSelect value={value || defaultValues} onChange={onChange} onBlur={onBlur} />
-                {/* <Error error={true}>{error?.message}</Error> */}
+                <Error error={true}>{error?.message}</Error>
             </CustomFormControl>
         </>
     );

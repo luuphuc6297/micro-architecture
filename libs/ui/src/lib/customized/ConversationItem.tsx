@@ -18,13 +18,12 @@ import {
     Menu,
     MenuItem,
 } from '@mui/material';
-import { useConversationStore } from 'app/conversation-store';
-import { ConversationSlice } from 'app/slices';
-import { useStore } from 'app/store';
+// import { useConversationStore } from 'app/conversation-store';
+// import { ConversationSlice } from 'app/slices';
+// import { useStore } from 'app/store';
 import { get, truncate } from 'lodash';
 import { ItemResponse, UserSliceState, WorkSpaceSliceState } from '@micro-architecture-coaching-cloud/models';
-import { CLIENT_EVENT, extractContent, timeout, customEvent } from '@micro-architecture-coaching-cloud/utils';
-// import customEvent from 'utils/events';
+import { CLIENT_EVENT, extractContent, timeout } from '@micro-architecture-coaching-cloud/utils';
 import { AvatarCustom } from './AvatarCustom';
 import { StyledWrapperAvatar } from './BoxMessages';
 
@@ -35,9 +34,9 @@ interface IConversationItemProps {
 }
 
 export const ConversationItem = ({ conversation, handleListItemClick }: IConversationItemProps) => {
-    const currentUser = useStore((state: UserSliceState | any) => state.user);
-    const deleteConversation = useConversationStore((state: ConversationSlice) => state.deleteConversation);
-    const workspace = useStore((state: WorkSpaceSliceState | any) => state.workspace);
+    // const currentUser = useStore((state: UserSliceState | any) => state.user);
+    // const deleteConversation = useConversationStore((state: ConversationSlice) => state.deleteConversation);
+    // const workspace = useStore((state: WorkSpaceSliceState | any) => state.workspace);
     const [hidden, setHidden] = React.useState<boolean>(true);
 
     const { title = '', lastMessage, user } = get(conversation, 'attributes', {} as any);
@@ -52,13 +51,13 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
         setAnchorEl(null);
     };
 
-    const idCurrentUser = currentUser.id;
+    // const idCurrentUser = currentUser.id;
     const dataUser = conversation.attributes.recentActivities;
-    const dataCurrentUser = dataUser.find((el: any) => el._id === idCurrentUser);
+    // const dataCurrentUser = dataUser.find((el: any) => el._id === idCurrentUser);
 
-    const avatarUrl = get(dataCurrentUser, 'avatarUrl', '');
-    const firstName = get(dataCurrentUser, 'firstName', '');
-    const lastName = get(dataCurrentUser, 'lastName', '');
+    // const avatarUrl = get(dataCurrentUser, 'avatarUrl', '');
+    // const firstName = get(dataCurrentUser, 'firstName', '');
+    // const lastName = get(dataCurrentUser, 'lastName', '');
 
     const [open, setOpen] = React.useState(false);
 
@@ -66,13 +65,17 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
         setOpen(true);
         handleCloseMenu();
         const el = document.getElementById('mess-universal');
+
         if (!el) return;
         const settings = el.querySelector('.MuiBox-root .conversations');
         if (!settings) return;
         await timeout(500);
         const dialogRemoveConversation: any = document.getElementById('dialog-remove-conversation');
+
         settings.appendChild(dialogRemoveConversation);
-        customEvent.emit(CLIENT_EVENT.ON_OFF_MODAL, false);
+        // const widgetEvent = new CustomEvent(CLIENT_EVENT.ON_OFF_MODAL, false);
+
+        // window.dispatchEvent(widgetEvent);
     };
 
     const handleClose = () => {
@@ -85,45 +88,45 @@ export const ConversationItem = ({ conversation, handleListItemClick }: IConvers
 
     const onArchiveCommunication = async () => {
         handleClose();
-        deleteConversation(workspace.id, conversation._id);
+        // deleteConversation(workspace.id, conversation._id);
     };
 
-    const renderLastMessage = () => {
-        if (!lastMessage) return;
-        const { type = '', content = '' } = lastMessage;
-        const messDetail = content.indexOf('wrapper') !== -1 ? 'Send a file' : extractContent(content);
+    // const renderLastMessage = () => {
+    //     if (!lastMessage) return;
+    //     const { type = '', content = '' } = lastMessage;
+    //     const messDetail = content.indexOf('wrapper') !== -1 ? 'Send a file' : extractContent(content);
 
-        if (type === 'Server') {
-            return truncate(extractContent(content), { length: 40 });
-        } else {
-            if (user._id !== currentUser.id) {
-                return `${truncate(`${user.firstName}: ${messDetail}`, { length: 40 })}`;
-            } else {
-                return `${truncate(`You: ${messDetail}`, { length: 40 })}`;
-            }
-        }
-    };
+    //     if (type === 'Server') {
+    //         return truncate(extractContent(content), { length: 40 });
+    //     } else {
+    //         if (user._id !== currentUser.id) {
+    //             return `${truncate(`${user.firstName}: ${messDetail}`, { length: 40 })}`;
+    //         } else {
+    //             return `${truncate(`You: ${messDetail}`, { length: 40 })}`;
+    //         }
+    //     }
+    // };
 
-    const loadModal = (value: boolean) => {
+    const loadModal = (value: any) => {
         setHidden(value);
     };
 
-    React.useEffect(() => {
-        customEvent.on(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
-        return () => {
-            customEvent.off(CLIENT_EVENT.ON_OFF_MODAL, loadModal);
-        };
-    });
+    // React.useEffect(() => {
+    //     window.addEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal, boolean);
+    //     return () => {
+    //         window.removeEventListener(CLIENT_EVENT.ON_OFF_MODAL, loadModal, boolean);
+    //     };
+    // });
 
     return (
         <React.Fragment>
             <ListItem button onClick={(event) => handleListItemClick(conversation._id)}>
                 <ListItemAvatar>
                     <StyledWrapperAvatar>
-                        <AvatarCustom {...{ firstName, lastName, avatarUrl }} />
+                        {/* <AvatarCustom {...{ firstName, lastName, avatarUrl }} /> */}
                     </StyledWrapperAvatar>
                 </ListItemAvatar>
-                <ListItemText primary={truncate(title, { length: 20 })} secondary={renderLastMessage()} />
+                {/* <ListItemText primary={truncate(title, { length: 20 })} secondary={renderLastMessage()} /> */}
                 <ListItemSecondaryAction>
                     <IconButton
                         edge="end"

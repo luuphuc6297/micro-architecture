@@ -33,6 +33,8 @@ const LoginContainer = () => {
             if (token) {
                 let mappingWorkSpace: WorkSpace[] = [];
                 localStorage.setItem('access_token', response.token);
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                //@ts-ignore
                 const user: CurrentUser = { id, attributes: { ...infoUser } };
                 user.attributes.token = token;
                 // storeUser(user);
@@ -54,6 +56,7 @@ const LoginContainer = () => {
                     workspaces: mappingWorkSpace,
                 } as any);
                 window.dispatchEvent(widgetEvent);
+
                 dispatch(authActions.loginSuccess(response));
 
                 switch (response?.payload.status) {
