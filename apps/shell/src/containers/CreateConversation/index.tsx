@@ -11,10 +11,9 @@ import React from 'react';
 import { useStore } from '../../features/cc-zustand-store';
 import { ConversationSlice } from '../../features/slices/conversations';
 
-// import { SocketContext } from 'services';
 // import { RTCSocketContext } from '@micro-architecture-coaching-cloud/common';
 import { CLIENT_EVENT, getTokenAuth } from '@micro-architecture-coaching-cloud/utils';
-import { Socket } from 'socket.io-client';
+// import { Socket } from 'socket.io-client';
 
 const CreateConversationContainer = () => {
     const token = getTokenAuth();

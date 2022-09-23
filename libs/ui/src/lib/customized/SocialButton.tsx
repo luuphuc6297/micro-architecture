@@ -1,7 +1,6 @@
 import { Button } from '@mui/material';
-import { styled } from '@mui/system';
-import React from 'react';
 import { grey } from '@mui/material/colors';
+import { styled } from '@mui/system';
 
 const SocialBtn = styled(Button)(({ theme }) => ({
     textTransform: 'none',
@@ -18,9 +17,9 @@ const SocialBtn = styled(Button)(({ theme }) => ({
     },
 }));
 
-export const SocialButton = ({ children, startIcon, ...props }: any) => {
+export const SocialButton = ({ children, ...props }: any) => {
     return (
-        <SocialBtn variant="outlined" startIcon={startIcon} {...props}>
+        <SocialBtn variant="outlined" {...props}>
             {children}
         </SocialBtn>
     );

@@ -4,6 +4,7 @@ import { Navigate, RouteObject, useRoutes } from 'react-router-dom';
 // import { Login, Register, SetupPassword, VerifyCode } from 'sso/Module';
 import { Login } from 'sso/Module';
 import { AuthLayout } from '../layouts';
+import { Outlet } from 'react-router-dom';
 
 const Sso = React.lazy(() => import('sso/Module'));
 const Workspace = React.lazy(() => import('workspace/Module'));
@@ -34,8 +35,8 @@ const Router = () => {
                             path: 'register',
                             element: (
                                 <React.Suspense fallback={<CircularIndeterminate />}>
-                                    {/* <Register /> */}
-                                    <div>Register</div>
+                                    {/* <Register />
+                                    <div>Register</div> */}
                                 </React.Suspense>
                             ),
                         },

@@ -1,4 +1,4 @@
-import { SenderArea } from '@micro-architecture-coaching-cloud/ui';
+import { SenderArea } from './SenderArea';
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 // import { useConversationStore } from 'app/conversation-store';
@@ -39,9 +39,7 @@ export const MessagesUI = () => {
     // };
 
     return (
-        <>
-            <SenderArea />
-        </>
+        <SenderArea />
         // <StyledMessageContentDetail id={`${conversation._id}`}>
         // <MessagesArea>
         // {/* <LoadMoreMessages loadMessages={loadMessages} /> */}

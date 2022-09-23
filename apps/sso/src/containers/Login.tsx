@@ -1,13 +1,12 @@
 import { CurrentUser, Login, ResponseUser, WorkSpace, WorkSpaces } from '@micro-architecture-coaching-cloud/models';
+import { CLIENT_EVENT, USER_STATUS } from '@micro-architecture-coaching-cloud/utils';
+import { first } from 'lodash';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { authApis } from '../apis/authApis';
 import { authActions } from '../features/slices/authSlice';
 import { LoginPage } from '../pages';
 import { useAppDispatch } from '../store/hooks';
-// import { useStore } from 'shell/zustand';
-import { CLIENT_EVENT, USER_STATUS } from '@micro-architecture-coaching-cloud/utils';
-import { first } from 'lodash';
 
 const LoginContainer = () => {
     const dispatch = useAppDispatch();
@@ -17,8 +16,6 @@ const LoginContainer = () => {
         email: '',
         password: '',
     } as Login;
-
-    // const { storeUser, storeWorkSpace, storeWorkSpaces } = useStore();
 
     const handleLogin = async (formValues: Login) => {
         try {
@@ -50,11 +47,13 @@ const LoginContainer = () => {
 
                     // storeWorkSpaces(mappingWorkSpace);
                 }
+
                 const widgetEvent = new CustomEvent(CLIENT_EVENT.SYNC_DATA, {
                     user,
                     workspace: first(mappingWorkSpace),
                     workspaces: mappingWorkSpace,
                 } as any);
+
                 window.dispatchEvent(widgetEvent);
 
                 dispatch(authActions.loginSuccess(response));
