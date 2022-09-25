@@ -2,6 +2,7 @@ import { Meta } from './common';
 import { AttributesConversation } from './conversation';
 import { MessageAttributes } from './messages';
 import { AttributesUser } from './user';
+import io, { Socket } from 'socket.io-client';
 
 interface ConfigsSocketEvent {
     body?: any;
@@ -63,3 +64,6 @@ export interface ClientToServerEvents {
     REQUEST_JOIN_CONVERSATION: (configs: ConfigsSocketEvent) => void;
     hello: () => void;
 }
+
+export const socket = (): Socket<ServerToClientEvents, ClientToServerEvents> =>
+    io('https://dev-rtc-api.coachingworkspace.com', { transports: ['websocket'] });
