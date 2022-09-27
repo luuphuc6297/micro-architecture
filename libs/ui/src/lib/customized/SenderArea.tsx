@@ -2,7 +2,10 @@ import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 // import { useConversationStore } from 'app/conversation-store';
 // import { useStore } from 'app/store';
-import { AttachBtn, SenderIconBtn, TinyMCE } from '@micro-architecture-coaching-cloud/ui';
+
+import { AttachBtn } from '../base/AttachBtn';
+import { SenderIconBtn } from '../base/SenderIconBtn';
+import { TinyMCE } from './TinyMCE';
 import { debounce, get, trim } from 'lodash';
 import { Conversation, WorkSpaceSliceState } from '@micro-architecture-coaching-cloud/models';
 import React from 'react';
@@ -113,7 +116,6 @@ export const SenderArea = () => {
                 onEnter={(evt: any) => console.log('e', evt)}
                 placeholder="Type a message and press ENTER to send..."
             />
-
             {length === 0 ? <AttachBtn /> : <SenderIconBtn onClick={() => console.log('handle send message')} />}
         </StyledSenderAreaWrapper>
     );

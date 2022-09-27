@@ -1,6 +1,5 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
-import React from 'react';
 
 const bannerUrl =
     'https://res.cloudinary.com/coaching-workspace/image/upload/h_1080/v1646637570/banner/annie-spratt-MChSQHxGZrQ-unsplash-min_mx2wvc.jpg';

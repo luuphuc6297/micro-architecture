@@ -40,7 +40,6 @@
         "redux-persist": "^6.0.0",
         "redux-saga": "^1.2.1",
         "regenerator-runtime": "0.13.7",
-        "socket.io-client": "^4.5.2",
         "tslib": "^2.3.0",
         "yup": "^0.32.11",
         "zustand": "^4.1.1"
@@ -92,6 +91,7 @@
         "path": "^0.12.7",
         "prettier": "^2.6.2",
         "react-test-renderer": "18.2.0",
+        "socket.io-client": "^4.5.2",
         "ts-jest": "27.1.4",
         "ts-node": "10.9.1",
         "typescript": "~4.7.2",
