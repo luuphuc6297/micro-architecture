@@ -1,1 +1,2 @@
-export { default, Login } from './app/app';
+export { default, Login, Register, SetupPassword, VerifyCode } from './app/app';
+

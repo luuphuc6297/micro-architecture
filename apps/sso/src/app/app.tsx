@@ -1,8 +1,7 @@
 import { Provider } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
-// import { LoginContainer, RegisterContainer, SetupPasswordContainer, VerifyCodeContainer } from '../containers';
-import { LoginContainer } from '../containers';
+import { LoginContainer, RegisterContainer, SetupPasswordContainer, VerifyCodeContainer } from '../containers';
 import { persistor, store } from '../store/store';
 
 export function App() {
@@ -21,14 +20,14 @@ export function Login() {
     return <LoginContainer />;
 }
 
-// export function Register() {
-//     return <RegisterContainer />;
-// }
+export function Register() {
+    return <RegisterContainer />;
+}
 
-// export function VerifyCode() {
-//     return <VerifyCodeContainer />;
-// }
+export function VerifyCode() {
+    return <VerifyCodeContainer />;
+}
 
-// export function SetupPassword() {
-//     return <SetupPasswordContainer />;
-// }
+export function SetupPassword() {
+    return <SetupPasswordContainer />;
+}

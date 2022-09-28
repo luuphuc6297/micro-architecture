@@ -23,8 +23,8 @@ const Router = () => {
                             path: 'login',
                             element: (
                                 <React.Suspense fallback={<CircularIndeterminate />}>
-                                    {/* <Login /> */}
-                                    <div>Login</div>
+                                    <Login />
+                                    {/* <div>Login</div> */}
                                 </React.Suspense>
                             ),
                             index: true,
