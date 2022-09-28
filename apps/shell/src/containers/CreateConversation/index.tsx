@@ -13,7 +13,6 @@ import { ConversationSlice } from '../../features/slices/conversations';
 
 // import { RTCSocketContext } from '@micro-architecture-coaching-cloud/common';
 import { CLIENT_EVENT, getTokenAuth } from '@micro-architecture-coaching-cloud/utils';
-// import { Socket } from 'socket.io-client';
 
 const CreateConversationContainer = () => {
     const token = getTokenAuth();

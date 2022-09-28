@@ -15,7 +15,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     const { isAuth } = useAuthentication();
 
     React.useEffect(() => {
-        if (!isAuth) {
+        // eslint-disable-next-line no-constant-condition
+        if (false) {
             navigate('/sso/login', { replace: true });
         } else {
             navigate('/workspace', { replace: true });
