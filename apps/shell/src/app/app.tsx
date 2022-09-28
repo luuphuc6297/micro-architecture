@@ -6,8 +6,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ToastContainer } from 'react-toastify';
-import { routesConfig } from './routes';
-import { useRoutes } from 'react-router-dom';
+import Router from './routes';
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -32,14 +31,12 @@ export function App() {
         };
     });
 
-    const route = useRoutes(routesConfig);
-
     return (
         <React.Suspense fallback={null}>
             <InfoContext.Provider value={info}>
                 <QueryClientProvider client={queryClient}>
                     <ThemeProvider theme={theme}>
-                        {route}
+                        <Router />
                         <CssBaseline />
                     </ThemeProvider>
                     <ToastContainer
