@@ -3,8 +3,10 @@ import { Outlet } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { LoginContainer, RegisterContainer, SetupPasswordContainer, VerifyCodeContainer } from '../containers';
 import { persistor, store } from '../store/store';
+import { socketConnection } from './socket';
 
 export function App() {
+    console.log(socketConnection);
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>

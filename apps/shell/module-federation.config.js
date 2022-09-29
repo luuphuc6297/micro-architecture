@@ -24,6 +24,7 @@ const coreLibraries = new Set([
     'react-timezone-select',
     'react-toastify',
     'zustand',
+    'socket.io-client',
 ]);
 
 /**

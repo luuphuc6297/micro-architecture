@@ -17,13 +17,13 @@ const Router = () => {
             children: [
                 {
                     path: 'sso',
-                    element: <Outlet />,
+                    element: <Sso />,
                     children: [
                         {
                             path: 'login',
                             element: (
                                 <React.Suspense fallback={<CircularIndeterminate />}>
-                                    {/* <Login /> */}
+                                    <Login />
                                     {/* <div>Login</div> */}
                                 </React.Suspense>
                             ),
