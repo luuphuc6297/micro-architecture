@@ -94,25 +94,25 @@ const LoginPage = ({ initialValues, onSubmit }: LoginFormProps) => {
     }, []);
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(handleFormSubmit)}>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                    }}
-                >
-                    <SocialButton startIcon={<StyledGoogleIcon src={GoogleLogoUrl} />}>
-                        Connect to Google
-                    </SocialButton>
-                    {/* <SocialButton startIcon={<FacebookIcon />}>Facebook</SocialButton> */}
-                    {/* <SocialButton startIcon={<StyledLinkedinIcon src={LinkedInIconUrl} />}>
+        <SSO title="Hi, welcome back" onRedirect={onRedirect} headerText="Don’t have an account?" redirectBtn="Sign Up">
+            <>
+                <form onSubmit={handleSubmit(handleFormSubmit)}>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                        }}
+                    >
+                        <SocialButton startIcon={<StyledGoogleIcon src={GoogleLogoUrl} />}>
+                            Connect to Google
+                        </SocialButton>
+                        <SocialButton startIcon={<StyledLinkedinIcon src={LinkedInIconUrl} />}>
                             Connect to LinkedIn
-                        </SocialButton> */}
-                </Box>
-                {/* <CustomDivider>or</CustomDivider> */}
-                <Box>
-                    {/* <InputField
+                        </SocialButton>
+                    </Box>
+                    <CustomDivider>or</CustomDivider>
+                    <Box>
+                        <InputField
                             id="email-address"
                             name="email"
                             control={control}
@@ -151,17 +151,18 @@ const LoginPage = ({ initialValues, onSubmit }: LoginFormProps) => {
                                     </InputAdornment>
                                 ),
                             }}
-                        /> */}
-                </Box>
-                {/* <SubmitButton disabled={!isValid || isSubmitting}>
+                        />
+                    </Box>
+                    <SubmitButton disabled={!isValid || isSubmitting}>
                         {isSubmitting && <CircularProgress size={16} color="primary" />}
                         &nbsp;Login
-                    </SubmitButton> */}
-            </form>
-            <ForgotPasswordLink underline="none" href="#">
-                Forgot your password?
-            </ForgotPasswordLink>
-        </div>
+                    </SubmitButton>
+                </form>
+                <ForgotPasswordLink underline="none" href="#">
+                    Forgot your password?
+                </ForgotPasswordLink>
+            </>
+        </SSO>
     );
 };
 

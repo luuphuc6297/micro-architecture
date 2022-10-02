@@ -24,7 +24,6 @@ const Router = () => {
                             element: (
                                 <React.Suspense fallback={<CircularIndeterminate />}>
                                     <Login />
-                                    {/* <div>Login</div> */}
                                 </React.Suspense>
                             ),
                             index: true,
@@ -33,8 +32,7 @@ const Router = () => {
                             path: 'register',
                             element: (
                                 <React.Suspense fallback={<CircularIndeterminate />}>
-                                    {/* <Register /> */}
-                                    <div>Register</div>
+                                    <Register />
                                 </React.Suspense>
                             ),
                         },
@@ -42,8 +40,7 @@ const Router = () => {
                             path: 'verify-code',
                             element: (
                                 <React.Suspense fallback={<CircularIndeterminate />}>
-                                    {/* <VerifyCode /> */}
-                                    <div>Register</div>
+                                    <VerifyCode />
                                 </React.Suspense>
                             ),
                         },
@@ -51,8 +48,7 @@ const Router = () => {
                             path: 'setup-password',
                             element: (
                                 <React.Suspense fallback={<CircularIndeterminate />}>
-                                    {/* <SetupPassword /> */}
-                                    <div>Setup password</div>
+                                    <SetupPassword />
                                 </React.Suspense>
                             ),
                         },
